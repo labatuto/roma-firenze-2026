@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Famiglia Ruiz · Roma &amp; Firenze · June 2026</title>
+<meta name="description" content="The Ruiz family guide to Rome and Florence, 12–21 June 2026. Itinerary, maps, food, and survival notes.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23B0532F'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='30' fill='%23FAF7F0' text-anchor='middle'%3ERF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<style>
+  :root {
+    --paper: #FAF7F0;
+    --paper-deep: #F2ECDF;
+    --card: #FFFDF8;
+    --ink: #2C2A26;
+    --ink-soft: #6F6A5F;
+    --ink-faint: #A39D90;
+    --terra: #B0532F;
+    --terra-deep: #8E3F22;
+    --terra-wash: #F7E9E1;
+    --olive: #6E7852;
+    --olive-wash: #EEF0E4;
+    --gold: #C9A45C;
+    --line: #E4DBC8;
+    --line-soft: #EDE6D6;
+    --booked: #B0532F;
+    --idea: #6E7852;
+    --max: 1060px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'EB Garamond', Georgia, 'Times New Roman', serif;
+    font-size: 19px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--terra); color: var(--paper); }
+
+  /* ---------- type ---------- */
+  h1, h2, h3, h4 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; line-height: 1.15; margin: 0; }
+  .kicker {
+    font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.22em; color: var(--terra);
+  }
+  .small { font-size: 15px; color: var(--ink-soft); }
+  a { color: var(--terra-deep); text-decoration: none; border-bottom: 1px solid rgba(176,83,47,.35); }
+  a:hover { border-bottom-color: var(--terra); }
+  em { font-style: italic; }
+
+  /* ---------- structure ---------- */
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 22px; }
+  section { padding: 56px 0 30px; }
+  .ornament { text-align: center; color: var(--gold); font-size: 22px; letter-spacing: 0.6em; padding: 10px 0 0; user-select: none; }
+  .rule-center { width: 56px; border: 0; border-top: 1px solid var(--terra); margin: 26px auto; }
+
+  /* ---------- masthead ---------- */
+  header.masthead {
+    text-align: center; padding: 72px 22px 40px;
+    background:
+      radial-gradient(ellipse 90% 60% at 50% -10%, rgba(201,164,92,0.12), transparent),
+      var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+  .masthead .dates {
+    font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.28em; text-transform: uppercase; color: var(--terra); margin-bottom: 22px;
+  }
+  .masthead h1 {
+    font-size: clamp(54px, 9vw, 110px); font-weight: 600; letter-spacing: 0.01em;
+  }
+  .masthead h1 .amp { font-style: italic; color: var(--terra); font-weight: 500; }
+  .masthead .sub {
+    font-size: clamp(19px, 2.6vw, 24px); font-style: italic; color: var(--ink-soft); margin-top: 18px;
+  }
+  .masthead .family-line {
+    font-family: 'Inter', sans-serif; font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-faint); margin-top: 30px; line-height: 2;
+  }
+  .masthead .family-line b { color: var(--ink-soft); font-weight: 600; }
+
+  /* ---------- nav ---------- */
+  nav.toc {
+    position: sticky; top: 0; z-index: 1000;
+    background: rgba(250,247,240,0.96); backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav.toc .wrap { display: flex; gap: 4px; overflow-x: auto; padding: 0 14px; }
+  nav.toc a {
+    font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-soft); padding: 15px 12px; white-space: nowrap;
+    border-bottom: 2px solid transparent;
+  }
+  nav.toc a:hover, nav.toc a.active { color: var(--terra-deep); border-bottom-color: var(--terra); }
+
+  /* ---------- badges ---------- */
+  .badge {
+    display: inline-block; font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 10px 2px; border-radius: 99px;
+    vertical-align: 2px; margin-left: 8px;
+  }
+  .badge.booked { background: var(--booked); color: #fff; }
+  .badge.idea { background: transparent; color: var(--idea); border: 1px solid var(--idea); }
+  .badge.warn { background: #fff; color: var(--terra-deep); border: 1px solid var(--terra-deep); }
+
+  /* ---------- section headers ---------- */
+  .section-head { text-align: center; margin-bottom: 40px; }
+  .section-head h2 { font-size: clamp(38px, 5.4vw, 58px); }
+  .section-head .kicker { display: block; margin-bottom: 14px; }
+  .epigraph {
+    max-width: 560px; margin: 22px auto 0; font-style: italic; color: var(--ink-soft); font-size: 19px;
+  }
+  .epigraph .attr { display: block; font-style: normal; font-size: 14px; margin-top: 8px; color: var(--ink-faint); letter-spacing: 0.06em; }
+
+  /* ---------- legend ---------- */
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; align-items: center;
+    background: var(--card); border: 1px solid var(--line); padding: 18px 24px; margin-top: 34px;
+    font-size: 16px; color: var(--ink-soft);
+  }
+  .legend span { white-space: nowrap; }
+
+  /* ---------- cast ---------- */
+  .cast-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px;
+  }
+  .cast-card {
+    background: var(--card); border: 1px solid var(--line); padding: 20px 22px 18px; position: relative;
+  }
+  .cast-card h4 { font-size: 23px; margin-bottom: 2px; }
+  .cast-card .role {
+    font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--terra); margin-bottom: 10px;
+  }
+  .cast-card p { margin: 0; font-size: 16px; color: var(--ink-soft); line-height: 1.5; }
+
+  /* ---------- glance table ---------- */
+  .glance { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); }
+  .glance th {
+    font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-faint); text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line);
+  }
+  .glance td { padding: 11px 16px; border-bottom: 1px solid var(--line-soft); font-size: 17px; vertical-align: top; }
+  .glance tr:last-child td { border-bottom: 0; }
+  .glance td.gdate { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 19px; white-space: nowrap; width: 110px; }
+  .glance td.gcity { color: var(--ink-faint); font-style: italic; width: 90px; }
+  .glance a { border-bottom: none; }
+  .glance tr:hover td { background: var(--paper-deep); cursor: default; }
+
+  /* ---------- stays ---------- */
+  .stay-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+  .stay-card { background: var(--card); border: 1px solid var(--line); border-top: 3px solid var(--terra); padding: 22px 24px; }
+  .stay-card .when { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terra); }
+  .stay-card h4 { font-size: 24px; margin: 8px 0 4px; }
+  .stay-card .addr { font-size: 16px; color: var(--ink-soft); margin-bottom: 12px; }
+  .stay-card .detail { font-size: 15.5px; color: var(--ink-soft); line-height: 1.7; }
+  .stay-card .detail b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- day cards ---------- */
+  .day {
+    background: var(--card); border: 1px solid var(--line); margin-bottom: 26px;
+    display: grid; grid-template-columns: 150px 1fr; overflow: hidden;
+  }
+  .day .date-col {
+    background: var(--paper-deep); border-right: 1px solid var(--line); padding: 26px 20px; text-align: center;
+  }
+  .day .date-col .dow { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); }
+  .day .date-col .num { font-family: 'Cormorant Garamond', serif; font-size: 64px; font-weight: 700; line-height: 1; color: var(--terra-deep); margin: 6px 0 2px; }
+  .day .date-col .mon { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; color: var(--ink-soft); }
+  .day .date-col .city-tag { margin-top: 14px; font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--olive); }
+  .day .body { padding: 26px 30px 22px; min-width: 0; }
+  .day .body > h3 { font-size: 30px; margin-bottom: 4px; }
+  .day .body > .daysub { font-style: italic; color: var(--ink-soft); margin: 0 0 18px; font-size: 17px; }
+
+  .item { padding: 14px 0; border-top: 1px solid var(--line-soft); }
+  .item:first-of-type { border-top: 0; }
+  .item .time {
+    font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+    color: var(--terra-deep); text-transform: uppercase; margin-bottom: 3px;
+  }
+  .item h5 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; margin: 0 0 6px; }
+  .item p { margin: 0 0 8px; font-size: 17px; color: var(--ink-soft); }
+  .item p:last-child { margin-bottom: 0; }
+  .item .fine { font-size: 15px; color: var(--ink-faint); }
+  .item.idea-item { background: linear-gradient(to right, transparent, transparent); }
+  .item .codes {
+    font-family: 'Inter', sans-serif; font-size: 13px; color: var(--ink-soft);
+    background: var(--paper-deep); border: 1px solid var(--line-soft); padding: 8px 12px; margin-top: 8px;
+    line-height: 1.8;
+  }
+  .item .codes b { font-weight: 600; color: var(--ink); }
+
+
+
+  .pullquote {
+    margin: 20px 0; padding: 0 0 0 22px; border-left: 2px solid var(--gold);
+    font-style: italic; font-size: 19px; color: var(--ink-soft);
+  }
+  .pullquote .attr { display: block; font-style: normal; font-size: 14px; color: var(--ink-faint); margin-top: 6px; }
+
+
+  /* ---------- maps ---------- */
+  .mapbox { height: 460px; border: 1px solid var(--line); margin: 18px 0 8px; background: var(--paper-deep); position: relative; z-index: 1; }
+  .map-fallback { display:flex; align-items:center; justify-content:center; height:100%; color: var(--ink-faint); font-style: italic; }
+  .map-caption { font-size: 15px; color: var(--ink-faint); text-align: center; margin-bottom: 36px; }
+  .leaflet-popup-content-wrapper { border-radius: 2px; font-family: 'EB Garamond', Georgia, serif; }
+  .leaflet-popup-content { font-size: 15px; line-height: 1.5; margin: 12px 16px; }
+  .leaflet-popup-content b { font-family: 'Cormorant Garamond', serif; font-size: 18px; }
+  .leaflet-popup-content .ptag { font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terra); display: block; margin-bottom: 2px; }
+  .pin-dot { border-radius: 50%; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.4); }
+
+  /* ---------- eat / shop tables ---------- */
+  .eat-section h3 { font-size: 32px; margin: 40px 0 6px; }
+  .eat-section .eat-intro { font-style: italic; color: var(--ink-soft); margin: 0 0 18px; font-size: 17px; }
+  table.eat { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); margin-bottom: 10px; }
+  table.eat th { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+  table.eat td { padding: 11px 14px; border-bottom: 1px solid var(--line-soft); font-size: 16.5px; vertical-align: top; }
+  table.eat tr:last-child td { border-bottom: 0; }
+  table.eat td:first-child { font-weight: 600; white-space: nowrap; }
+  table.eat td .by { display: block; font-size: 13.5px; color: var(--terra); font-style: italic; }
+  table.eat td.eatnote { color: var(--ink-soft); }
+
+  /* ---------- shops ---------- */
+  .shop-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+  .shop-group { background: var(--card); border: 1px solid var(--line); padding: 22px 26px; }
+  .shop-group h4 { font-size: 22px; margin-bottom: 12px; color: var(--terra-deep); }
+  .shop-group ul { list-style: none; margin: 0; padding: 0; }
+  .shop-group li { padding: 7px 0; border-bottom: 1px dotted var(--line); font-size: 16.5px; }
+  .shop-group li:last-child { border-bottom: 0; }
+  .shop-group li b { font-weight: 600; }
+  .shop-group li span { color: var(--ink-soft); }
+
+  /* ---------- survival ---------- */
+  .surv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+  .surv-card { background: var(--card); border: 1px solid var(--line); padding: 24px 26px; }
+  .surv-card h4 { font-size: 23px; margin-bottom: 10px; }
+  .surv-card p, .surv-card li { font-size: 16.5px; color: var(--ink-soft); }
+  .surv-card p { margin: 0 0 10px; }
+  .surv-card ul { margin: 0; padding-left: 20px; }
+  .surv-card li { margin-bottom: 7px; }
+  .surv-card b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- phrases ---------- */
+  .phrases { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); }
+  .phrases td { padding: 10px 16px; border-bottom: 1px solid var(--line-soft); font-size: 17px; }
+  .phrases tr:last-child td { border-bottom: 0; }
+  .phrases td:first-child { font-style: italic; font-weight: 500; width: 46%; }
+  .phrases td:last-child { color: var(--ink-soft); }
+
+  /* ---------- codes ---------- */
+  .codes-table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); font-size: 16px; }
+  .codes-table th { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+  .codes-table td { padding: 11px 14px; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+  .codes-table tr:last-child td { border-bottom: 0; }
+  .codes-table td.code { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: var(--terra-deep); }
+
+  /* ---------- footer ---------- */
+  footer { text-align: center; padding: 70px 22px 90px; border-top: 1px solid var(--line); margin-top: 70px; background: var(--paper-deep); }
+  footer .motto { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-style: italic; color: var(--terra-deep); }
+  footer p { color: var(--ink-faint); font-size: 15px; max-width: 520px; margin: 18px auto 0; }
+
+  /* ---------- collapsible sections ---------- */
+  section, .day { scroll-margin-top: 64px; }
+  section { padding: 0; border-bottom: 1px solid var(--line); }
+  section .section-head {
+    cursor: pointer; -webkit-tap-highlight-color: transparent; user-select: none;
+    margin-bottom: 0; padding: 30px 0 26px; position: relative;
+  }
+  section .section-head:active { opacity: .65; }
+  section:not(.open) .section-head h2 { font-size: clamp(30px, 5.5vw, 42px); }
+  section:not(.open) .section-head .epigraph { display: none; }
+  section .section-head .chev {
+    display: flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%;
+    margin: 16px auto 0; color: var(--terra); font-size: 20px; font-weight: 400; line-height: 1;
+    background: var(--card); transition: transform .25s ease;
+  }
+  section.open .section-head .chev { transform: rotate(45deg); }
+  section .section-head .tap-hint {
+    font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--ink-faint); margin-top: 10px;
+  }
+  section.open .section-head .tap-hint { display: none; }
+  section .section-body { display: none; padding-bottom: 50px; }
+  section.open .section-body { display: block; animation: fadeIn .28s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  /* ---------- collapsible day cards ---------- */
+  .day .date-col, .day .body > h3, .day .body > .daysub, .day .day-hint { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .day.collapsed .body > *:not(h3):not(.daysub):not(.day-hint) { display: none; }
+  .day .day-hint {
+    font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--terra); margin-top: 12px; user-select: none;
+  }
+  .day .day-hint::before { content: '+ '; }
+  .day:not(.collapsed) .day-hint::before { content: '− '; }
+  .day.collapsed .body { padding-bottom: 18px; }
+  .day .body > h3:hover { color: var(--terra-deep); }
+
+  /* ---------- putti easter eggs ---------- */
+  .putto {
+    margin: 56px auto; text-align: center; max-width: 440px; padding: 0 26px;
+    opacity: 0; transform: translateY(26px); transition: opacity .9s ease, transform .9s ease;
+  }
+  .putto.revealed { opacity: 1; transform: none; }
+  .putto img {
+    width: 100%; max-width: 350px; border: 1px solid var(--line); padding: 10px; background: #fff;
+    box-shadow: 0 3px 18px rgba(44,42,38,0.09); filter: sepia(0.14) contrast(0.98);
+  }
+  .putto figcaption { font-size: 14.5px; font-style: italic; color: var(--ink-soft); margin-top: 13px; line-height: 1.55; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 680px) {
+    body { font-size: 18px; }
+    section { padding: 0; }
+    .wrap { padding: 0 16px; }
+    section .section-head { padding: 24px 0 22px; }
+    section .section-body { padding-bottom: 36px; }
+    table.glance, table.eat, table.codes-table { display: block; overflow-x: auto; }
+    table.glance tbody, table.eat tbody, table.codes-table tbody { display: table; width: 100%; }
+    table.glance thead, table.eat thead, table.codes-table thead { display: table; width: 100%; }
+    .glance td, table.eat td, .codes-table td { font-size: 15px; padding: 10px 10px; }
+    .legend { gap: 10px; padding: 14px 16px; font-size: 14.5px; flex-direction: column; align-items: flex-start; }
+    .day { grid-template-columns: 1fr; }
+    .day .date-col { display: flex; align-items: baseline; gap: 12px; padding: 14px 22px; border-right: 0; border-bottom: 1px solid var(--line); text-align: left; }
+    .day .date-col .num { font-size: 34px; margin: 0; }
+    .day .date-col .dow { font-size: 10px; }
+    .day .date-col .mon { font-size: 17px; }
+    .day .date-col .city-tag { margin-top: 0; margin-left: auto; }
+    .day .body { padding: 20px 22px 18px; }
+    .mapbox { height: 380px; }
+    .masthead { padding: 54px 18px 34px; }
+  }
+  @media print {
+    nav.toc, .mapbox, .map-caption { display: none !important; }
+    body { font-size: 12px; background: #fff; }
+    .day, .surv-card, .stay-card, .cast-card { break-inside: avoid; border: 1px solid #ccc; }
+    section { padding: 12px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ======================= MASTHEAD ======================= -->
+<header class="masthead">
+  <div class="dates">12 — 21 June 2026</div>
+  <h1>Roma <span class="amp">&amp;</span> Firenze</h1>
+  <p class="sub">Ten Ruizes, two cities, one stroller, and the better part of Western civilization.</p>
+  <div class="family-line">
+    <b>Nancy · Diego · Santi · Nicole · Nico · Eleni · Nina · Joaquin · Rafa · Lucia</b><br>
+    with guest appearances by Emma Steinhobel &amp; the Clarks
+  </div>
+</header>
+
+<!-- ======================= NAV ======================= -->
+<nav class="toc" id="toc">
+  <div class="wrap">
+    <a href="#cast">The Cast</a>
+    <a href="#glance">The Week</a>
+    <a href="#stays">Where We Sleep</a>
+    <a href="#rome">Rome</a>
+    <a href="#florence">Florence</a>
+    <a href="#maps">Maps</a>
+    <a href="#eat">Eat</a>
+    <a href="#shop">Shop</a>
+    <a href="#survival">Survival</a>
+    <a href="#codes">The Fine Print</a>
+  </div>
+</nav>
+
+<!-- ======================= HOW TO READ ======================= -->
+<div class="wrap">
+  <div class="legend">
+    <span><span class="badge booked">Booked</span>&nbsp; ticketed &amp; confirmed — a real reservation exists</span>
+    <span><span class="badge idea">Idea</span>&nbsp; a good option, nothing committed</span>
+    <span><span class="badge warn">Check</span>&nbsp; needs verifying before you rely on it</span>
+  </div>
+  <p class="small" style="text-align:center; margin-top:14px;">
+    <b>Everything starts folded</b> — tap a section title to open it, tap a day to unfold the details.
+    Compiled June 10–12 from the family's bookings, texts, TripIt, saved maps, and a certain amount of judgment.
+    Nancy holds several of the tour confirmations — when in doubt, the answer is on her WhatsApp.
+  </p>
+</div>
+
+<!-- ======================= THE CAST ======================= -->
+<section id="cast">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Dramatis Personae</span>
+      <h2>The Cast</h2>
+      <p class="epigraph">&ldquo;Potential trip to Italy June 13–21&hellip;roughly. If you cannot make those dates, speak now please.&rdquo;
+        <span class="attr">— Nancy, January 12, in the family chat. Nobody spoke.</span>
+      </p>
+    </div>
+    <div class="cast-grid">
+      <div class="cast-card">
+        <h4>Nancy</h4>
+        <div class="role">The Architect</div>
+        <p>Booked the flights, the apartments, the tours, and the train. Walking the Camino de Santiago when this is over. Reachable on <b>WhatsApp only</b> — no SMS.</p>
+      </div>
+      <div class="cast-card">
+        <h4>Diego</h4>
+        <div class="role">Papi</div>
+        <p>Found the family&rsquo;s church in Rome, handled the insurance paperwork, and has been officially fired up for Florence since June 7. Expect him to know more about the ruins than the guides do.</p>
+      </div>
+      <div class="cast-card">
+        <h4>Santi &amp; Nicole</h4>
+        <div class="role">Arriving via wedding</div>
+        <p>Flying in from Spain on Friday night with two children, two carry-ons, and the quiet confidence of people who have already survived a destination wedding.</p>
+      </div>
+      <div class="cast-card">
+        <h4>Rafa</h4>
+        <div class="role">Age 3 · Primary Stakeholder</div>
+        <p>Interests: gelato, fountains, cats, gladiators. Brings a sketchbook. Has seen <em>Roman Holiday</em> and liked it better than Fellini.</p>
+      </div>
+      <div class="cast-card">
+        <h4>Lucia</h4>
+        <div class="role">Age 3 months</div>
+        <p>Will sleep through the entire Renaissance. First passport stamps; zero memories. We&rsquo;ll take pictures.</p>
+      </div>
+      <div class="cast-card">
+        <h4>Nico</h4>
+        <div class="role">The Sponsor</div>
+        <p>Works on the Hill, carries a Light Phone, and is buying the family one dinner in Rome. &ldquo;Anyone bringing a piano?&rdquo;</p>
+      </div>
+      <div class="cast-card">
+        <h4>Eleni</h4>
+        <div class="role">The Scholar</div>
+        <p>Taking summer classes online from a Florentine piazza. Packing Dutch Blitz. Continues to Edinburgh when this ends.</p>
+      </div>
+      <div class="cast-card">
+        <h4>Nina</h4>
+        <div class="role">Designated Stroller-Napper</div>
+        <p>&ldquo;I am also happy to nap in the stroller if he wants to run around!&rdquo; A team player.</p>
+      </div>
+      <div class="cast-card">
+        <h4>Joaquin</h4>
+        <div class="role">Age 17</div>
+        <p>The teenager. Enters nearly every museum in Italy for free, which he should find more exciting than he will.</p>
+      </div>
+      <div class="cast-card">
+        <h4>Emma Steinhobel</h4>
+        <div class="role">Guest Star</div>
+        <p>Crashing at the Rome apartment June 13–14. The ten becomes eleven, briefly.</p>
+      </div>
+      <div class="cast-card">
+        <h4>Cathy &amp; Sean Clark</h4>
+        <div class="role">Friday Dinner, Florence</div>
+        <p>Family friends, joining for dinner on June 19. Restaurant to be chosen — see the Eat section for ammunition.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ======================= WEEK AT A GLANCE ======================= -->
+<section id="glance">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">The Shape of the Thing</span>
+      <h2>The Week at a Glance</h2>
+    </div>
+    <table class="glance">
+      <thead><tr><th>Date</th><th>City</th><th>The Main Event</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="gdate"><a href="#d12">Fri 12</a></td><td class="gcity">Rome</td><td>Everyone lands — the Six from DC by afternoon, Santi&rsquo;s four from Barcelona at 11:40&nbsp;PM. Beds near Campo de&rsquo; Fiori.</td><td><span class="badge booked">Booked</span></td></tr>
+        <tr><td class="gdate"><a href="#d13">Sat 13</a></td><td class="gcity">Rome</td><td>Settle into the Airbnb. Pasta, strolling, the Mamertine Prison if the spirit moves. Outdoor Miyazaki after dark, maybe.</td><td><span class="badge booked">Booked</span> <span class="badge idea">Ideas</span></td></tr>
+        <tr><td class="gdate"><a href="#d14">Sun 14</a></td><td class="gcity">Rome</td><td>Colosseum &amp; Forum tour, 10:00 AM. Church at 5:30 PM.</td><td><span class="badge booked">Booked</span></td></tr>
+        <tr><td class="gdate"><a href="#d15">Mon 15</a></td><td class="gcity">Rome</td><td>Vatican tour, 10 AM – 1 PM. Knees and shoulders covered, passports in pockets.</td><td><span class="badge booked">Booked</span></td></tr>
+        <tr><td class="gdate"><a href="#d16">Tue 16</a></td><td class="gcity">Both</td><td>Last Roman morning, then the train north. Florence by 7:30 PM — the apartment is beside the Duomo.</td><td><span class="badge booked">Booked</span></td></tr>
+        <tr><td class="gdate"><a href="#d17">Wed 17</a></td><td class="gcity">Florence</td><td>Duomo day — all ten hold Brunelleschi Passes. Dome climb at 6:00 PM sharp.</td><td><span class="badge booked">Booked</span></td></tr>
+        <tr><td class="gdate"><a href="#d18">Thu 18</a></td><td class="gcity">Florence</td><td>Open day. Uffizi, Boboli, a Tuscan hill town, or blessed nothing.</td><td><span class="badge idea">Ideas</span></td></tr>
+        <tr><td class="gdate"><a href="#d19">Fri 19</a></td><td class="gcity">Florence</td><td>Artisan shops &amp; the last of the Duomo passes. Dinner with the Clarks.</td><td><span class="badge booked">Booked</span> <span class="badge idea">Ideas</span></td></tr>
+        <tr><td class="gdate"><a href="#d20">Sat 20</a></td><td class="gcity">Florence</td><td>Last full day. Market in the morning, Piazzale Michelangelo at sunset.</td><td><span class="badge idea">Ideas</span></td></tr>
+        <tr><td class="gdate"><a href="#d21">Sun 21</a></td><td class="gcity">Home</td><td>Three morning departure waves, all from Florence airport (FLR).</td><td><span class="badge booked">Booked</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ======================= WHERE WE SLEEP ======================= -->
+<section id="stays">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Three Roofs</span>
+      <h2>Where We Sleep</h2>
+    </div>
+    <div class="stay-grid">
+      <div class="stay-card">
+        <div class="when">Friday June 12 · One Night · Rome</div>
+        <h4>Campo de&rsquo; Fiori 27</h4>
+        <div class="addr">Piazza Campo de&rsquo; Fiori 27, Rome — Santi&rsquo;s four<br>The Six are next door at no. 56</div>
+        <div class="detail">
+          Booking.com confirmation <b>5523728978</b> · door PIN <b>1998</b><br>
+          Property phone <b>+39 335 437 211</b><br>
+          Check-out by <b>11:00 AM</b> Saturday · Rome city tax €5/person/night, <b>cash</b><br>
+          <b>Landing at 11:40 PM:</b> the official check-in window closes at 8 PM and the property knows you&rsquo;re late — call from the airport anyway.
+        </div>
+      </div>
+      <div class="stay-card">
+        <div class="when">June 13 – 16 · Three Nights · Rome</div>
+        <h4>Airbnb &ldquo;Domitilla&rdquo;</h4>
+        <div class="addr">Piazza Benedetto Cairoli 107, Rome</div>
+        <div class="detail">
+          &ldquo;Campo de&rsquo; Fiori stylish apartment&rdquo; · sleeps 9 in beds<br>
+          Host <b>+39 346 300 1465</b> · self check-in, <b>smart lock</b>, from 3:00 PM<br>
+          <b>Fourth floor, no elevator.</b> Rafa on the floor bed, Lucia in the crib.<br>
+          Check-out Tuesday by <b>10:00 AM</b> · Emma stays here June 13–14
+        </div>
+      </div>
+      <div class="stay-card">
+        <div class="when">June 16 – 21 · Five Nights · Florence</div>
+        <h4>Airbnb &ldquo;Francesca&rdquo;</h4>
+        <div class="addr">Piazza dell&rsquo;Olio 3, Florence</div>
+        <div class="detail">
+          &ldquo;Cresti — Casa sul Duomo, terrazza vista 360°&rdquo; — one block from the Duomo, with a <b>roof terrace</b><br>
+          Host <b>+39 340 349 2732</b> · check-in from 3 PM (you arrive ~8 PM — host knows)<br>
+          Quiet hours <b>10 PM – 8 AM</b> · check-out Sunday by <b>10:00 AM</b>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ROME ======================= -->
+<section id="rome">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Act One · June 12 – 16</span>
+      <h2>Roma</h2>
+      <p class="epigraph">&ldquo;Saturday could be a fun day to acclimate ourselves, eat pasta, stroll around.&rdquo;
+        <span class="attr">— Nancy, who has never written a truer sentence</span>
+      </p>
+    </div>
+
+    <!-- FRIDAY 12 -->
+    <div class="day" id="d12">
+      <div class="date-col">
+        <div class="dow">Friday</div>
+        <div class="num">12</div>
+        <div class="mon">June</div>
+        <div class="city-tag">Rome</div>
+      </div>
+      <div class="body">
+        <h3>The Landing</h3>
+        <p class="daysub">Ten people, three flights, one piazza by midnight.</p>
+
+        <div class="item">
+          <div class="time">Afternoon — the Six arrive <span class="badge booked">Booked</span></div>
+          <h5>Washington → Rome, in two waves</h5>
+          <p>United 126 (the direct) lands at FCO at <b>1:15 PM</b>; the Nice-connection group (United 242 → ITA Airways 345) lands at <b>4:30 PM</b>. They settle in at Campo de&rsquo; Fiori no. 56 and hold the table for dinner.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">9:45 PM → 11:40 PM — Santi&rsquo;s four <span class="badge booked">Booked</span></div>
+          <h5>Barcelona → Rome Fiumicino</h5>
+          <p>Wizz Air Malta <b>W4 6020</b>, departing BCN 9:45 PM, landing FCO 11:40 PM. Carry-on only.</p>
+          <div class="codes">Gotogate order <b>1113-152-570</b> · Passengers: Santiago, Nicole, Rafael, Lucia</div>
+        </div>
+
+        <div class="item">
+          <div class="time">Midnight — getting into the city <span class="badge idea">Idea</span></div>
+          <h5>The €55 white taxi</h5>
+          <p>The Leonardo Express train will have stopped by the time you clear passport control with two sleeping children — don&rsquo;t chase it. Walk past every person who says &ldquo;taxi?&rdquo; inside the terminal, out to the official rank, and take a <b>white taxi: flat €55</b> to anywhere in the old city, up to 4 passengers, luggage included. ~45 minutes at that hour.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">~12:45 AM — beds</div>
+          <h5>Campo de&rsquo; Fiori 27, door PIN 1998</h5>
+          <p>The Six are next door at no. 56. Tomorrow has no alarm clock.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SATURDAY 13 -->
+    <div class="day" id="d13">
+      <div class="date-col">
+        <div class="dow">Saturday</div>
+        <div class="num">13</div>
+        <div class="mon">June</div>
+        <div class="city-tag">Rome</div>
+      </div>
+      <div class="body">
+        <h3>Roma, Con Calma</h3>
+        <p class="daysub">The acclimation day. Pasta, fountains, and a 2,600-year-old prison if you&rsquo;re feeling ambitious.</p>
+
+        <div class="item">
+          <div class="time">Morning — the market on your doorstep <span class="badge idea">Idea</span></div>
+          <h5>Campo de&rsquo; Fiori market</h5>
+          <p>Runs until ~2 PM, literally outside the door of no. 27 — fruit, flowers, and a vendor who will absolutely overcharge you for a lemon the size of Rafa&rsquo;s head. Worth it.</p>
+          <p class="fine">The brooding hooded statue in the middle is Giordano Bruno, burned on this spot in 1600 for insisting, among other heresies, that the universe was infinite. The Church apologized in 2000. He still looks unconvinced.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">9:00 AM slot — flexible all day <span class="badge booked">Booked</span></div>
+          <h5>Mamertine Prison (Carcer Tullianum)</h5>
+          <p>Nancy has tickets for 9 AM, but they&rsquo;ll honor them <b>any time before 5 PM</b> — so go when the naps allow. A 20–30 minute visit to Rome&rsquo;s state dungeon: Jugurtha starved here, Vercingetorix was strangled here after Caesar&rsquo;s triumph, and tradition holds that <b>Peter and Paul</b> were chained here before their martyrdoms. Heavy material, short visit, air-conditioned by virtue of being a hole in the ground.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">11:00 AM / 3:00 PM — the move <span class="badge booked">Booked</span></div>
+          <h5>Out of no. 27, into &ldquo;Domitilla&rdquo;</h5>
+          <p>Check-out by 11, check-in at Piazza Benedetto Cairoli 107 from 3 PM (smart lock). It&rsquo;s a six-minute walk. For the gap: ask the host about early bag drop (+39 346 300 1465), or stash bags with the Six at no. 56.</p>
+          <p class="fine">Emma Steinhobel joins tonight and stays through Sunday.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">Afternoon — within two blocks <span class="badge idea">Ideas</span></div>
+          <h5>Cats, the Pantheon, and the first gelato</h5>
+          <p><b>Largo di Torre Argentina</b> (2 blocks from the apartment): the spot where Julius Caesar was stabbed is now a cat sanctuary. The ruins are for the adults; the cats are for Rafa. Both parties will be satisfied.</p>
+          <p><b>The Pantheon</b> (10 minutes): €5, under-18 free, and the coolest air in Rome — the building that taught Brunelleschi how to build the dome you&rsquo;ll climb on Wednesday. Go in, look up, say nothing.</p>
+          <p><b>Gelato:</b> Frigidarium (near Piazza Navona) or Giolitti (the 1900 marble-counter classic).</p>
+        </div>
+
+        <div class="item">
+          <div class="time">Dinner <span class="badge idea">Ideas</span></div>
+          <h5>First pasta</h5>
+          <p>Keep it close and forgiving: <b>Tonnarello</b> in Trastevere (big, loud, coloring pages for kids, cacio e pepe) or the <b>Jewish Ghetto</b> ten minutes away — <b>Nonna Betta</b> for fried artichokes. Nobody has reservations anywhere; that is officially the plan.</p>
+          <div class="pullquote">&ldquo;I have made zero arrangements for food in Rome or Florence&hellip; I also think gelato for dinner is a fine option.&rdquo;<span class="attr">— Nancy, June 8, setting policy</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUNDAY 14 -->
+    <div class="day" id="d14">
+      <div class="date-col">
+        <div class="dow">Sunday</div>
+        <div class="num">14</div>
+        <div class="mon">June</div>
+        <div class="city-tag">Rome</div>
+      </div>
+      <div class="body">
+        <h3>The Colosseum &amp; the Forum</h3>
+        <p class="daysub">Bread and circuses in the morning; church in the evening.</p>
+
+        <div class="item">
+          <div class="time">10:00 AM — meet the guide <span class="badge booked">Booked</span></div>
+          <h5>Colosseum &amp; Roman Forum tour — about 3 hours</h5>
+          <p>Nancy has the tickets and the meeting point. <b>Note the time: 10:00 AM.</b> This tour was rescheduled twice — an earlier version of the family plan said 12:15 PM, but the tour operator&rsquo;s confirmation of June 9 says 10:00 AM. Believe the most recent email; ask Nancy on WhatsApp if anyone&rsquo;s unsure.</p>
+          <p class="fine">Fifty thousand seats, free admission, and the emperor watching from the box — the Colosseum was the original public entertainment policy. The Forum next door is where the Republic actually happened: the rostra where Cicero spoke, the Senate house, the temple where Caesar&rsquo;s body was burned. It is also, in June, a shadeless rock field — hats and water.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">1:00 PM — after the tour <span class="badge idea">Ideas</span></div>
+          <h5>Lunch in Monti, then disappear until evening</h5>
+          <p><b>Pizzeria Alle Carrette</b> (Monti, 10 min walk, on Monsignor Fucinaro&rsquo;s map) or <b>Pizza della Madonna dei Monti</b> (Emily&rsquo;s pick, window counter). Then back to the apartment for the siesta — this is the hottest stretch of the day and everyone just walked three hours.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">5:30 – 7:00 PM <span class="badge booked">Booked</span></div>
+          <h5>Church — Chiesa Cristiana Breccia di Roma</h5>
+          <p>Via di S. Eufemia 9, near Trajan&rsquo;s Column — a 15-minute walk from the apartment. Italian service with <b>simultaneous English translation on earphones</b>. Found by Papi through Emanuele Tosi; it&rsquo;s on the TripIt.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">Evening <span class="badge idea">Ideas</span></div>
+          <h5>The golden-hour walk home</h5>
+          <p>From church you&rsquo;re beside the Forum at the best hour to see it — the columns go honey-colored around 8 PM. Walk the long way home past the Vittoriano and Piazza Venezia. Dinner near the apartment, or make good on the gelato-for-dinner doctrine.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MONDAY 15 -->
+    <div class="day" id="d15">
+      <div class="date-col">
+        <div class="dow">Monday</div>
+        <div class="num">15</div>
+        <div class="mon">June</div>
+        <div class="city-tag">Rome</div>
+      </div>
+      <div class="body">
+        <h3>The Vatican</h3>
+        <p class="daysub">Seven kilometers of galleries, one ceiling.</p>
+
+        <div class="item">
+          <div class="time">10:00 AM – 1:00 PM <span class="badge booked">Booked</span></div>
+          <h5>Vatican tour — museums &amp; Sistine Chapel</h5>
+          <p>Meeting point near the Vatican — Nancy has the confirmation (it&rsquo;s in TripIt). Roughly 3 hours.</p>
+          <div class="codes"><b>Dress code, enforced at security with no exceptions:</b> shoulders AND knees covered — applies to every adult and teenager. Shorts must reach the knee; bring light scarves for cover-ups. <b>Bring passports.</b> No photos inside the Sistine Chapel.</div>
+          <p class="fine">The family homework was <em>The Agony and the Ecstasy</em>. No spoilers, but Michelangelo finishes the ceiling — four years on his back, paint in his eyes, while Julius II yelled at him to hurry up. You get about 15 minutes under it before the guards shuffle you along. Use them.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">1:15 PM — the correct lunch <span class="badge idea">Idea</span></div>
+          <h5>Pizzarium</h5>
+          <p>Gabriele Bonci&rsquo;s legendary pizza al taglio, <b>Via della Meloria 43</b>, five minutes from the museum exit. Sold by weight, eaten standing or on benches, roughly €7–9 a person. The single best post-Vatican move in Rome. The line moves fast.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">Afternoon — per the official plan</div>
+          <h5>&ldquo;Afternoon rest with the babies&rdquo;</h5>
+          <p>It says so right in the itinerary. Honor it.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">Evening <span class="badge idea">Ideas</span></div>
+          <h5>Castel Sant&rsquo;Angelo, or nothing at all</h5>
+          <p>If anyone has legs left: <b>Castel Sant&rsquo;Angelo</b> (open to 7:30 PM, €15, under-18 free) — Hadrian&rsquo;s tomb turned papal panic room, with a spiral ramp Rafa will treat as a racetrack and a rooftop with the best dusk view of St. Peter&rsquo;s. 15-minute river walk from the Vatican.</p>
+          <p><b>St. Peter&rsquo;s Basilica note:</b> entry is free but the midday line is an hour-plus. If the family wants inside, the move is a <b>7:00 AM visit</b> another morning (tomorrow, before the train? ambitious) — you walk straight in, and the dome climb (€10 with elevator) opens at 7:30 AM for whichever siblings want to earn their breakfast.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TUESDAY 16 -->
+    <div class="day" id="d16">
+      <div class="date-col">
+        <div class="dow">Tuesday</div>
+        <div class="num">16</div>
+        <div class="mon">June</div>
+        <div class="city-tag">Rome → Florence</div>
+      </div>
+      <div class="body">
+        <h3>Northbound</h3>
+        <p class="daysub">A last Roman morning, then ninety minutes of Tuscany out a train window.</p>
+
+        <div class="item">
+          <div class="time">10:00 AM <span class="badge booked">Booked</span></div>
+          <h5>Check out of Domitilla</h5>
+          <p>Bags out by 10. Ask the host to hold luggage for the day, or use the deposit at Termini (KiPoint, ~€6/bag). The train isn&rsquo;t until late afternoon — you have most of a day in Rome with no agenda, which is the best kind.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">The free day — pick two, not five <span class="badge idea">Ideas</span></div>
+          <h5>How to spend a last morning in Rome</h5>
+          <p><b>Trevi Fountain before the crowds</b> — new for 2026, the fountain&rsquo;s lower basin costs €2 (free under 6)&hellip; unless you go <b>before 9 AM</b>, when it&rsquo;s free and nearly empty. Coin over the left shoulder: it means you&rsquo;ll return to Rome.</p>
+          <p><b>Villa Borghese gardens</b> — Rome&rsquo;s Central Park. Rowboats on the little lake (€3/person per 20 min, there&rsquo;s a temple and there are turtles), pedal carts, shade. The toddler-decompression valve before strapping him into a train seat.</p>
+          <p><b>The Ghetto, one last time</b> — lunch at <b>Nonna Betta</b> or <b>Piperno</b>; carciofi alla giudia don&rsquo;t exist in Florence.</p>
+          <p><b>Or:</b> pack slowly, eat a long lunch, buy the train snacks. Con calma.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">Late afternoon — Termini <span class="badge booked">Booked</span></div>
+          <h5>Train: Roma Termini → Firenze Santa Maria Novella</h5>
+          <p>Nancy booked the tickets — the train arrives Florence <b>~7:30 PM</b>, so it departs Termini roughly <b>5:50–6:00 PM</b> (high-speed trains take ~1h35m). <b>Confirm the exact train number and coach with Nancy on WhatsApp.</b> Termini is 10–15 minutes by taxi from the apartment; with ten people and bags, leave an hour of margin.</p>
+          <p class="fine">Board 15 minutes early. Strollers fold into the racks at the car ends. The Tuscan hills start about 40 minutes in — sit on the left side for the better view. Eleni is bringing Dutch Blitz; the train table is the venue.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">~8:00 PM — Florence <span class="badge booked">Booked</span></div>
+          <h5>Airbnb &ldquo;Francesca,&rdquo; Piazza dell&rsquo;Olio 3</h5>
+          <p>Santa Maria Novella station is <em>in</em> the city — you walk out the front doors and you&rsquo;re a 10-minute stroll from the apartment. Host knows you&rsquo;re arriving ~8 PM (+39 340 349 2732). When you turn the last corner and the Duomo&rsquo;s marble wall fills the entire street: that&rsquo;s your block. The apartment has a roof terrace. Use it tonight.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- putto easter egg I -->
+<figure class="putto">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Luca_della_Robbia._Cantoria_Detail_Dansende_putti_%281ste_reli%C3%ABf%2C_onderaan%29%2C_GD008719.jpg/500px-Luca_della_Robbia._Cantoria_Detail_Dansende_putti_%281ste_reli%C3%ABf%2C_onderaan%29%2C_GD008719.jpg" alt="Dancing putti, marble relief by Luca della Robbia" loading="lazy">
+  <figcaption>Dancing putti from Luca della Robbia&rsquo;s <em>Cantoria</em> (1438). They live in the Opera del Duomo Museum, Florence — your Brunelleschi Pass gets you in to meet them on June 17.</figcaption>
+</figure>
+
+<!-- ======================= FLORENCE ======================= -->
+<section id="florence">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Act Two · June 16 – 21</span>
+      <h2>Firenze</h2>
+      <p class="epigraph">&ldquo;Get fired up for Florence, people!&rdquo;
+        <span class="attr">— Papi, June 7, attaching an image</span>
+      </p>
+    </div>
+
+    <!-- WEDNESDAY 17 -->
+    <div class="day" id="d17">
+      <div class="date-col">
+        <div class="dow">Wednesday</div>
+        <div class="num">17</div>
+        <div class="mon">June</div>
+        <div class="city-tag">Florence</div>
+      </div>
+      <div class="body">
+        <h3>The Duomo</h3>
+        <p class="daysub">All ten of you hold passes to the cathedral works. The dome goes up at six.</p>
+
+        <div class="item">
+          <div class="time">All day — passes in hand <span class="badge booked">Booked</span></div>
+          <h5>Brunelleschi Pass × 10</h5>
+          <p>Nancy bought everyone the full pass: it covers the <b>Dome climb</b>, <b>Giotto&rsquo;s Bell Tower</b>, the <b>Baptistery</b>, the <b>Opera del Duomo Museum</b>, and the <b>Santa Reparata crypt</b>, valid <b>June 17–19</b>. Only the dome climb has a fixed time — everything else, wander in when you like, as many times as you like, across all three days.</p>
+          <div class="codes">Order <b>87-XS7PIC</b> · Confirmation <b>SPDENLNMVMVV</b> · QR tickets are on Nancy&rsquo;s email &amp; the TripIt · individual refs in The Fine Print below · <b>bring photo ID for the dome</b></div>
+        </div>
+
+        <div class="item">
+          <div class="time">Morning — beat the heat <span class="badge idea">Ideas</span></div>
+          <h5>Baptistery &amp; the Museum (both on your pass)</h5>
+          <p>The <b>Baptistery</b> — the oldest building on the square, where every Florentine from Dante onward was baptized — and then the <b>Opera del Duomo Museum</b>, the sleeper hit of Florence: Ghiberti&rsquo;s original Gates of Paradise, Donatello&rsquo;s gaunt wooden Magdalene, and the Pietà Michelangelo carved for his own tomb and then attacked with a hammer. The museum is air-conditioned, which by 11 AM will feel like its greatest masterpiece.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">Lunch <span class="badge idea">Idea</span></div>
+          <h5>Mercato Centrale</h5>
+          <p>Ten people, ten different cravings, zero reservations: the food hall upstairs at the Mercato Centrale (10-minute walk) has a counter for everyone — fresh pasta, pizza, lampredotto for the brave, gelato. Long shared tables, high chairs, elevator, A/C. This is the default answer to &ldquo;where should ten people eat?&rdquo; for the rest of the trip.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">6:00 PM sharp — the main event <span class="badge booked">Booked</span></div>
+          <h5>The Dome climb — 463 steps</h5>
+          <p>Timed entry, no flexibility, <b>photo ID checked at the gate</b> (Porta della Mandorla, north side). You climb between the inner and outer shells of Brunelleschi&rsquo;s dome — the largest masonry dome ever built, raised without scaffolding by a goldsmith who refused to explain his methods — and come out 90 meters above Florence in the early evening light.</p>
+          <p class="fine"><b>Who climbs:</b> ideally every adult — the family is working on a babysitter for the evening so nobody has to sit this one out. The stairs are narrow, spiraling, and one-way; not for Rafa or Lucia.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">Worth knowing while you stand there</div>
+          <h5>The Pazzi conspiracy happened under this dome</h5>
+          <p class="fine">April 26, 1478, during High Mass: assassins backed by a rival banking family (and, awkwardly, the Pope) attacked the Medici brothers at the moment of the elevation of the Host. Giuliano died on the cathedral floor with nineteen stab wounds; Lorenzo vaulted the choir rail and barricaded himself in the sacristy, and lived to hunt down every conspirator. They hanged from the windows of the Palazzo Vecchio you&rsquo;ll walk past tonight. Machiavelli was nine years old and took the lesson.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">Evening <span class="badge idea">Ideas</span></div>
+          <h5>Dinner near the dome</h5>
+          <p><b>Trattoria Zà Zà</b> (on Nicole &amp; Santi&rsquo;s saved map — big menu, big tables, tourist-adjacent but reliably good) or <b>Osteria Belle Donne</b> (Emily&rsquo;s pick, charming room). Both take reservations — book this morning for tonight.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- THURSDAY 18 -->
+    <div class="day" id="d18">
+      <div class="date-col">
+        <div class="dow">Thursday</div>
+        <div class="num">18</div>
+        <div class="mon">June</div>
+        <div class="city-tag">Florence</div>
+      </div>
+      <div class="body">
+        <h3>The Open Day</h3>
+        <p class="daysub">Nothing is booked. Here is what&rsquo;s worth booking — or not.</p>
+
+        <div class="item">
+          <div class="time">The museum question <span class="badge warn">Check</span></div>
+          <h5>The Uffizi — still unticketed</h5>
+          <p>As of when this guide was compiled, <b>nobody holds Uffizi tickets</b> — it&rsquo;s on the family to-do list. June slots sell out, but returns appear daily. Two honest options:</p>
+          <p><b>Book it:</b> uffizi.it, official site, ~€29/adult, under-18 free (still needs a slot). The 8:15 AM slot is coolest and emptiest; the new <b>€16 &ldquo;after 4 PM&rdquo;</b> ticket is the budget hack. With kids, do the 90-minute version: Giotto → Botticelli&rsquo;s Birth of Venus and Primavera → Leonardo&rsquo;s Annunciation → the terrace café over the Palazzo Vecchio, done.</p>
+          <p><b>Or skip it honestly:</b> with a 3-year-old and an infant in mid-June heat, there is no shame in choosing the Boboli Gardens over four floors of Madonnas. The paintings have waited 500 years; they&rsquo;ll wait for the next trip.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">The other gallery <span class="badge idea">Idea</span></div>
+          <h5>The Accademia — David</h5>
+          <p>One hallway, one statue, 45 minutes, and even Rafa will get it — it&rsquo;s a 17-foot giant. (That&rsquo;s rather the point: David was the underdog. Florence, surrounded by larger powers, adopted him as the civic mascot.) Same booking reality as the Uffizi: official site, under-18 free, book a morning slot or go at 7 PM when the day-trippers leave.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">The escape-the-city options <span class="badge idea">Ideas</span></div>
+          <h5>Tuscany, scaled to the crew</h5>
+          <p><b>Fiesole</b> — the realistic one. City bus #7 from Piazza San Marco, 25 minutes, and you&rsquo;re in a hill town with a Roman theater, Etruscan walls, and a view over all of Florence. Half a day, stroller-tolerant, gelato available. This is the day trip that doesn&rsquo;t end in tears.</p>
+          <p><b>Siena</b> — the ambitious one. ~1.5 hours by bus (the 131R from the train station is direct), the Campo, the striped Duomo, medieval streets. A full day; the littles will spend a lot of it being carried.</p>
+          <p><b>San Gimignano</b> — the postcard one. Medieval Manhattan, fourteen stone towers. Requires bus connections via Poggibonsi; honestly hard with ten people and a stroller.</p>
+          <p><b>A cooking class</b> — Nancy floated this in January. Several outfits do family pasta-making (~€60–90/person, 3 hours, you eat what you make). Rafa rolling pici with flour to his elbows is the photo of the trip; book a morning class via GetYourGuide/Airbnb Experiences if the family votes yes.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">The do-nothing option <span class="badge idea">Idea</span></div>
+          <h5>Boboli Gardens &amp; the Oltrarno</h5>
+          <p>Cross the Ponte Vecchio before 9 AM (empty, golden), then the <b>Boboli Gardens</b> — the Medici&rsquo;s backyard, 45 hectares of cypress avenues, grottos, and fountains where kids can actually run. Lunch in the <b>Oltrarno</b> (La Casalinga or Osteria Santo Spirito), gelato at <b>Gelateria della Passera</b>, and home for naps. This is the option your correspondent would pick.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRIDAY 19 -->
+    <div class="day" id="d19">
+      <div class="date-col">
+        <div class="dow">Friday</div>
+        <div class="num">19</div>
+        <div class="mon">June</div>
+        <div class="city-tag">Florence</div>
+      </div>
+      <div class="body">
+        <h3>Artisans &amp; the Clarks</h3>
+        <p class="daysub">Last day of the Duomo passes. First (and only) dinner party.</p>
+
+        <div class="item">
+          <div class="time">Morning <span class="badge idea">Ideas</span></div>
+          <h5>The workshop crawl</h5>
+          <p>This is the day for the <b>Florence Finds</b> list (see Shop, below) — the leather school behind Santa Croce, Madova&rsquo;s gloves by the Ponte Vecchio, marbled paper at Il Papiro, and the 400-year-old pharmacy-perfumery of Santa Maria Novella. Nearly everything is a 10-minute walk from the apartment. Split up; nobody needs consensus to buy gloves.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">Anytime — passes expire today <span class="badge booked">Booked</span></div>
+          <h5>Cash in the rest of the Brunelleschi Pass</h5>
+          <p>The pass covers the <b>Bell Tower climb</b> (414 steps — the best <em>view of</em> the dome, since you can&rsquo;t see the dome while standing on it), the Baptistery, the crypt, and the museum through end of day. Whoever hasn&rsquo;t been up something tall yet, today&rsquo;s the day.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">Evening <span class="badge booked">Booked</span></div>
+          <h5>Dinner with Cathy &amp; Sean Clark</h5>
+          <p>The Clarks are in Florence and joining for dinner. <b>Restaurant TBD — Nancy is coordinating.</b> Strong candidates that take a table of 12: <b>La Giostra</b> (Emily: &ldquo;highly recommend&rdquo; — candlelit, antipasto plates that silence the table) or <b>Osteria Belle Donne</b>. Whoever books it, do it by Wednesday.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">Late <span class="badge idea">Idea</span></div>
+          <h5>The terrace</h5>
+          <p>The apartment has a 360° roof terrace and Florence has long summer twilights. Dutch Blitz, something cold, the Duomo floodlit overhead. The siblings can find the Oltrarno bars after; Piazza Santo Spirito is the move.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SATURDAY 20 -->
+    <div class="day" id="d20">
+      <div class="date-col">
+        <div class="dow">Saturday</div>
+        <div class="num">20</div>
+        <div class="mon">June</div>
+        <div class="city-tag">Florence</div>
+      </div>
+      <div class="body">
+        <h3>The Last Full Day</h3>
+        <p class="daysub">Markets in the morning, the whole city at sunset, suitcases at night.</p>
+
+        <div class="item">
+          <div class="time">Morning <span class="badge idea">Ideas</span></div>
+          <h5>Mercato Centrale, ground floor — provisioning run</h5>
+          <p>The real market (closes 2 PM, closed Sunday): aged pecorino, dried porcini, good olive oil, truffle things. <b>US customs note: hard cheese (pecorino, parmesan) is allowed home; cured meats (salami, prosciutto) are not</b> — they will be confiscated and you will be sad. Buy the cheese, photograph the salami, let it go.</p>
+          <p>Also this morning: <b>Santa Croce</b> (€9.50, under-12 free) — the tombs of Michelangelo, Galileo, and Machiavelli under one roof, with the <b>calcio storico</b> arena built out front (the final is June 24; you&rsquo;ll see the sand and bleachers and be glad you&rsquo;re not in it).</p>
+        </div>
+
+        <div class="item">
+          <div class="time">Golden hour — ~7:45 PM <span class="badge idea">Idea</span></div>
+          <h5>Piazzale Michelangelo</h5>
+          <p>The sunset view of Florence — the whole city, the dome, the hills, in one frame. Taxi up (~€12, you cannot make ten people climb in this heat), claim balustrade space by 8 PM (sunset ~8:50), then <b>walk down</b> through the rose garden into San Niccolò for a last dinner. There is a bronze David up there; he has the best office in Italy.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">Tonight</div>
+          <h5>Pack. Seriously.</h5>
+          <p>Three different groups leave at three different hours tomorrow morning, and the earliest leaves at 4:45 AM. Boarding passes downloaded, taxis booked (see tomorrow), bags by the door, kids&rsquo; travel clothes laid out. Then the terrace, one last time.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUNDAY 21 -->
+    <div class="day" id="d21">
+      <div class="date-col">
+        <div class="dow">Sunday</div>
+        <div class="num">21</div>
+        <div class="mon">June</div>
+        <div class="city-tag">Home</div>
+      </div>
+      <div class="body">
+        <h3>Arrivederci</h3>
+        <p class="daysub">Three morning departure waves, all from Florence airport (FLR) — Amerigo Vespucci, 15–20 minutes by taxi from the apartment.</p>
+
+        <div class="item">
+          <div class="time">~4:45 AM — wave one <span class="badge booked">Booked</span></div>
+          <h5>ITA Airways group → Washington Dulles</h5>
+          <p><b>ITA 1676</b> departs FLR <b>6:25 AM</b> → Rome FCO 7:15 AM (yes, this group touches Rome — from inside an airplane) → <b>ITA 618</b> FCO 10:20 AM → Dulles 2:30 PM EDT.</p>
+        </div>
+
+        <div class="item">
+          <div class="time">~7:45 AM — wave two <span class="badge booked">Booked</span></div>
+          <h5>Lufthansa group → Washington Dulles</h5>
+          <p><b>Air Dolomiti 8193</b> departs FLR <b>9:50 AM</b> → Munich 11:05 AM → <b>Lufthansa 414</b> Munich 4:20 PM → Dulles 7:25 PM EDT. (Papi, Joaquin, and Nico are split across these two DC itineraries — Nico booked separately on miles. Check whose name is on which.)</p>
+        </div>
+
+        <div class="item">
+          <div class="time">~9:30 AM — wave three <span class="badge booked">Booked</span></div>
+          <h5>Santi, Nicole, Rafa &amp; Lucia → New York</h5>
+          <p><b>TAP Portugal TP875</b> departs FLR <b>11:50 AM</b> → Lisbon, connecting to <b>TP209</b> → JFK, landing <b>8:05 PM EDT</b>. Apartment checkout is 10 AM; leaving at 9:30 works perfectly.</p>
+          <div class="codes">Gotogate order <b>1119-781-728</b> · <b>Carry-on only — no checked bags included.</b> You flew to Europe on Iberia <em>with</em> checked bags; if you have more than carry-ons now (you do), buy checked bags through TAP&rsquo;s &ldquo;Manage Booking&rdquo; <b>before</b> reaching the airport — it&rsquo;s roughly half the counter price.</div>
+        </div>
+
+        <div class="item">
+          <div class="time">Morning — wave three-and-a-half <span class="badge booked">Booked</span></div>
+          <h5>Nancy, Eleni &amp; Nina → Barcelona</h5>
+          <p>Morning flight FLR → Barcelona for a day and a half — then Eleni continues to Edinburgh, Nina home to DC, and Nancy takes a train to Pamplona to walk the rest of her Camino. (Flight details live with Nancy.)</p>
+        </div>
+
+        <div class="item">
+          <div class="time">Taxis — book the night before <span class="badge warn">Check</span></div>
+          <h5>Three taxi waves from Piazza dell&rsquo;Olio</h5>
+          <p>Radio Taxi Firenze: <b>+39 055 4242</b> (or 4390), or have the host arrange. Florence airport runs a fixed <b>€22–25</b> from the center, ~15–20 minutes. Book all three pickups (4:45 / 7:45 / 9:30) the evening before.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ======================= MAPS ======================= -->
+<section id="maps">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Orientation</span>
+      <h2>The Maps</h2>
+      <p class="epigraph">Both apartments sit in the middle of everything — most of these pins are inside a fifteen-minute walk.
+      <span class="attr">Tap any pin for notes and a Google Maps link. Use the layer switcher (top right of each map) to filter.</span></p>
+    </div>
+
+    <h3 style="font-size:32px; margin-bottom:4px;">Rome <span class="small" style="font-style:italic;">— centered on the apartments</span></h3>
+    <div id="map-rome" class="mapbox"><div class="map-fallback">The map needs an internet connection&hellip;</div></div>
+    <p class="map-caption"><span style="color:#D7263D">●</span> where you sleep &nbsp; <span style="color:#1F5FBF">●</span> booked &nbsp; <span style="color:#1E8A4C">●</span> food &amp; gelato &nbsp; <span style="color:#E9A820">●</span> ideas &nbsp; <span style="color:#8B4FB8">●</span> shops</p>
+
+    <h3 style="font-size:32px; margin-bottom:4px;">Florence <span class="small" style="font-style:italic;">— one block from the Duomo</span></h3>
+    <div id="map-florence" class="mapbox"><div class="map-fallback">The map needs an internet connection&hellip;</div></div>
+    <p class="map-caption">Same legend. The apartment-to-Duomo &ldquo;commute&rdquo; is about 60 seconds.</p>
+
+    <h3 style="font-size:32px; margin-bottom:4px;">The Whole Campaign <span class="small" style="font-style:italic;">— Rome to Florence to home</span></h3>
+    <div id="map-italy" class="mapbox" style="height:380px;"><div class="map-fallback">The map needs an internet connection&hellip;</div></div>
+    <p class="map-caption">The train on June 16 covers 230 km in about 95 minutes. Sit on the left.</p>
+  </div>
+</section>
+
+<!-- ======================= EAT ======================= -->
+<section id="eat">
+  <div class="wrap eat-section">
+    <div class="section-head">
+      <span class="kicker">The Important Part</span>
+      <h2>Eat</h2>
+      <p class="epigraph">&ldquo;Emily is sending a couple of good tips for food in Rome, one a map from a priest-foodie, one her own smaller list. Have at them, familia.&rdquo;
+        <span class="attr">— Nancy, June 9. Both lists are folded in below, plus the family&rsquo;s saved pins and some editorial judgment.</span>
+      </p>
+    </div>
+
+    <p style="text-align:center;" class="small">Nothing is reserved anywhere — that&rsquo;s by design (&ldquo;street food and gelato for dinner are fine options&rdquo;).
+    For the sit-down places marked <b>book</b>, call or reserve online a day or two ahead; for a table of ten-plus, reserve everything.
+    Remember Nico owes the family one sponsored dinner in Rome — spend his money wisely.</p>
+
+    <!-- ROME EATING -->
+    <h3>Rome — sit-down</h3>
+    <p class="eat-intro">Roman cooking is poverty cooking perfected: pasta with cheese and pepper, pasta with cured pork and egg, artichokes flattened and fried. Order those things.</p>
+    <table class="eat">
+      <thead><tr><th>Place</th><th>Where</th><th>The order &amp; the note</th><th>Book?</th></tr></thead>
+      <tbody>
+        <tr><td>Da Enzo al 29<span class="by">Emily&rsquo;s favorite</span></td><td>Trastevere</td><td class="eatnote">Carbonara, burrata, fried artichokes. Tiny and beloved — <b>no dinner reservations</b>; with ten people, go at lunch or send a sibling scout at 6:30 PM.</td><td>No (queue)</td></tr>
+        <tr><td>Tonnarello<span class="by">group-proof</span></td><td>Trastevere</td><td class="eatnote">Cacio e pepe, meatballs, coloring pages for kids. Big, loud, forgiving — built for parties of ten.</td><td>Yes</td></tr>
+        <tr><td>Da Teo<span class="by">group-proof</span></td><td>Trastevere</td><td class="eatnote">Roman classics on a real piazza; outdoor tables hold big families.</td><td>Yes</td></tr>
+        <tr><td>Nonna Betta<span class="by">the Ghetto</span></td><td>Jewish Ghetto</td><td class="eatnote">Carciofi alla giudia — the deep-fried artichoke that justifies the whole neighborhood. 10 min from the apartment.</td><td>Yes</td></tr>
+        <tr><td>Piperno<span class="by">since 1860</span></td><td>Jewish Ghetto</td><td class="eatnote">The white-tablecloth version — this is the Nico-sponsored-dinner candidate. Artichokes, fritto misto.</td><td>Yes</td></tr>
+        <tr><td>Roma Sparita<span class="by">Msgr. Fucinaro</span></td><td>Trastevere</td><td class="eatnote">Cacio e pepe served in a parmesan bowl — Bourdain&rsquo;s famous one. Emily&rsquo;s verdict: good, not life-changing. The bowl is the point.</td><td>Yes</td></tr>
+        <tr><td>Checco er Carettiere<span class="by">Msgr. Fucinaro</span></td><td>Trastevere</td><td class="eatnote">Old-school Roman, fresh fish, waiters in white jackets.</td><td>Yes</td></tr>
+        <tr><td>Ristorante Vecchia Roma<span class="by">Msgr. Fucinaro</span></td><td>Piazza Campitelli</td><td class="eatnote">&ldquo;Delicious fettuccine&rdquo; per the Monsignor; pricey, gorgeous piazza seating near the Ghetto.</td><td>Yes</td></tr>
+        <tr><td>Flavio al Velavevodetto<span class="by">editorial pick</span></td><td>Testaccio</td><td class="eatnote">Built into a hill of ancient Roman pottery shards. Carbonara and cacio e pepe done perfectly; garden seating; handles groups.</td><td>Yes</td></tr>
+        <tr><td>Il Botticelli<span class="by">your saved pin</span></td><td>Centro</td><td class="eatnote">From Santi &amp; Nicole&rsquo;s &ldquo;Italian trip&rdquo; map list.</td><td>Yes</td></tr>
+        <tr><td>Terre e Domus<span class="by">Emily</span></td><td>Piazza Venezia</td><td class="eatnote">Modern Lazio cooking, all-regional wine list; steps from the Sunday church.</td><td>Yes</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Rome — standing up</h3>
+    <table class="eat">
+      <thead><tr><th>Place</th><th>Where</th><th>What it is</th></tr></thead>
+      <tbody>
+        <tr><td>Pizzarium<span class="by">the post-Vatican move</span></td><td>Via della Meloria 43</td><td class="eatnote">Bonci&rsquo;s pizza al taglio, by weight. The best square of pizza in Italy. 5 min from the Vatican Museums exit.</td></tr>
+        <tr><td>Trapizzino<span class="by">genius with kids</span></td><td>Testaccio / Trastevere</td><td class="eatnote">Pizza-pocket cones filled with Roman stews. €5, no fork, no mess, no argument.</td></tr>
+        <tr><td>Supplizio<span class="by">the snack</span></td><td>Via dei Banchi Vecchi</td><td class="eatnote">Gourmet supplì — fried rice balls with the molten mozzarella pull. Walking distance from the apartment.</td></tr>
+        <tr><td>Antico Forno Roscioli<span class="by">breakfast</span></td><td>Near Campo de&rsquo; Fiori</td><td class="eatnote">Pizza bianca straight from the oven, eaten on the street at 8 AM. Also: Roscioli Caffè (your saved pin) for the serious pastry.</td></tr>
+        <tr><td>Pizza della Madonna dei Monti<span class="by">Emily loves it</span></td><td>Monti</td><td class="eatnote">Window-counter pizza near the Colosseum — the post-tour Sunday lunch.</td></tr>
+        <tr><td>Forno Campo de&rsquo; Fiori<span class="by">Emily</span></td><td>Campo de&rsquo; Fiori</td><td class="eatnote">The corner bakery on your first-night piazza. Pizza bianca for the midnight arrival, if they were smart enough to save some.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Rome — coffee &amp; aperitivo</h3>
+    <table class="eat">
+      <thead><tr><th>Place</th><th>Where</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>Sciascia Caffè 1919<span class="by">your saved pin</span></td><td>Prati</td><td class="eatnote">Espresso with a ring of melted chocolate in the cup. Near the Vatican — Monday morning fuel.</td></tr>
+        <tr><td>Sant&rsquo;Eustachio Il Caffè<span class="by">editorial</span></td><td>Near Pantheon</td><td class="eatnote">The famous gran caffè, pre-sugared and whipped. Don&rsquo;t ask how; they guard it.</td></tr>
+        <tr><td>Il Goccetto<span class="by">your saved pin</span></td><td>Via dei Banchi Vecchi</td><td class="eatnote">Wine bar in a 16th-century palazzo — the siblings&rsquo; evening, or the parents&rsquo; escape.</td></tr>
+        <tr><td>La Barrique<span class="by">your saved pin</span></td><td>Monti</td><td class="eatnote">Natural wine, small plates.</td></tr>
+        <tr><td>VyTA / Bar San Callisto<span class="by">Emily</span></td><td>P.za Farnese / Trastevere</td><td class="eatnote">Aperol on a Renaissance piazza vs. €3 beers with the locals. Both correct, different moods.</td></tr>
+      </tbody>
+    </table>
+
+    <!-- FLORENCE EATING -->
+    <h3>Florence — sit-down</h3>
+    <p class="eat-intro">Tuscan cooking is about the ingredient: the steak, the bean, the new oil. Bistecca alla fiorentina is sold by weight (~€55/kg) and one steak feeds three Ruizes.</p>
+    <table class="eat">
+      <thead><tr><th>Place</th><th>Where</th><th>The order &amp; the note</th><th>Book?</th></tr></thead>
+      <tbody>
+        <tr><td>La Giostra<span class="by">Emily: &ldquo;highly recommend&rdquo;</span></td><td>Near Santa Croce</td><td class="eatnote">Candlelit, fairy lights, antipasto spread that arrives unbidden. The leading candidate for <b>dinner with the Clarks</b> — takes large tables.</td><td>Yes — days ahead</td></tr>
+        <tr><td>Osteria Belle Donne<span class="by">Emily</span></td><td>Via delle Belle Donne</td><td class="eatnote">Flowers and fruit piled everywhere, handwritten menu. The other Clark-dinner candidate.</td><td>Yes</td></tr>
+        <tr><td>Trattoria Zà Zà<span class="by">your saved pin</span></td><td>By Mercato Centrale</td><td class="eatnote">Huge menu, huge tables, ribollita and bistecca. Touristy and good anyway.</td><td>Yes</td></tr>
+        <tr><td>Trattoria Mario<span class="by">the real one</span></td><td>Beside Mercato Centrale</td><td class="eatnote"><b>Lunch only, no reservations, cash only, closed Sunday.</b> Shared tables since 1953. Send two siblings at 11:45 to hold places; the bistecca and ribollita reward them.</td><td>No (queue)</td></tr>
+        <tr><td>Perseus<span class="by">family bistecca</span></td><td>Piazza della Libertà</td><td class="eatnote">Where Florentine families eat steak on Sundays. 15-min walk north, takes big groups easily, shows you the raw cut before cooking.</td><td>Yes</td></tr>
+        <tr><td>Trattoria Sostanza<span class="by">the legend</span></td><td>Near Santa Maria Novella</td><td class="eatnote">Since 1869: the butter chicken and the artichoke pie. Two seatings, communal tables, books out weeks ahead — try anyway for a half-table.</td><td>Yes — long shot</td></tr>
+        <tr><td>La Casalinga<span class="by">Oltrarno</span></td><td>Via dei Michelozzi</td><td class="eatnote">Home cooking, big family tables, fast and cheap. The no-drama dinner.</td><td>Yes (or short queue)</td></tr>
+        <tr><td>Osteria Santo Spirito<span class="by">Oltrarno</span></td><td>Piazza Santo Spirito</td><td class="eatnote">Truffle gnocchi gratinati. Outdoor tables on the best piazza for kids to run.</td><td>Yes</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Florence — standing up &amp; breakfast</h3>
+    <table class="eat">
+      <thead><tr><th>Place</th><th>Where</th><th>What it is</th></tr></thead>
+      <tbody>
+        <tr><td>Mercato Centrale (upstairs)<span class="by">the 10-person answer</span></td><td>San Lorenzo</td><td class="eatnote">24 counters, shared tables, high chairs, A/C, open 10 AM–midnight. When in doubt, come here.</td></tr>
+        <tr><td>All&rsquo;Antico Vinaio<span class="by">your saved pin</span></td><td>Via dei Neri</td><td class="eatnote">The internet&rsquo;s most famous sandwich (&ldquo;La Favolosa&rdquo;). The Via dei Neri line is 45+ minutes — <b>use the train-station branch instead (no line)</b>, or go at 10:30 AM. One sandwich feeds two kids.</td></tr>
+        <tr><td>Da Nerbone<span class="by">since 1873</span></td><td>Mercato Centrale, ground floor</td><td class="eatnote">Lampredotto — Florence&rsquo;s tripe sandwich. The adults&rsquo; dare; the siblings film it. Lunch only.</td></tr>
+        <tr><td>Pino&rsquo;s (Salumeria Verdi)<span class="by">no line</span></td><td>Near Santa Croce</td><td class="eatnote">The locals&rsquo; sandwich counter — same quality as the famous one, none of the queue.</td></tr>
+        <tr><td>Ditta Artigianale<span class="by">Emily: &ldquo;best breakfast of the trip&rdquo;</span></td><td>Oltrarno (Via dello Sprone)</td><td class="eatnote">Proper coffee, proper pastry, across the Ponte Vecchio.</td></tr>
+        <tr><td>Pasticceria Deanna<span class="by">Emily</span></td><td>Via Maso Finiguerra</td><td class="eatnote">Breakfast pastries — cornetti, budini di riso — before the crowds.</td></tr>
+      </tbody>
+    </table>
+
+    <p class="small" style="margin-top:30px;"><b>Table manners, briefly:</b> the <em>coperto</em> (€1.50–3.50/person cover charge) is legal and normal, not a scam. Water is bottled — &ldquo;naturale o frizzante?&rdquo; Tipping is not expected; round up for great service. Dinner before 7:30 PM marks you as American, which you are, so go at 7 anyway — it&rsquo;s when the kitchens are freshest and the high chairs are free.</p>
+  </div>
+</section>
+<!-- ======================= SHOP ======================= -->
+<section id="shop">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Artisans &amp; Heirlooms</span>
+      <h2>Shop</h2>
+      <p class="epigraph">From Santi &amp; Nicole&rsquo;s &ldquo;Italy Trip 2026&rdquo; list — things made by hand, by people who&rsquo;ve been making them for generations.
+        <span class="attr">Nearly everything below is a short walk from the Florence apartment. Buy the thing you&rsquo;ll still own in thirty years.</span>
+      </p>
+    </div>
+
+    <div class="shop-cols">
+      <div class="shop-group">
+        <h4>Leather &amp; Gloves — Florence</h4>
+        <ul>
+          <li><b>Scuola del Cuoio</b> <span>— the leather school in the back of Santa Croce; watch the artisans work, then buy from them directly.</span></li>
+          <li><b>Madova</b> <span>— glove-makers since 1919, by the Ponte Vecchio. The &ldquo;century-old affordable glove shop&rdquo; Nicole flagged in February. Cashmere-lined, fitted to your hand at the counter.</span></li>
+          <li><b>Il Bisonte</b> <span>— Florentine leather goods since 1970; the unlined totes age beautifully.</span></li>
+          <li><b>Benheart</b> <span>— handmade jackets and belts, Via Calzaiuoli.</span></li>
+          <li><b>The Bridge Boutique</b> <span>— recommended by Jon Arbuach.</span></li>
+          <li><b>Frau Leman</b> <span>— handmade leather.</span></li>
+        </ul>
+      </div>
+      <div class="shop-group">
+        <h4>Paper, Prints &amp; Art Supplies — Florence</h4>
+        <ul>
+          <li><b>Il Papiro</b> <span>— Florentine marbled paper; the notebooks make the best gifts under €20 in the city.</span></li>
+          <li><b>Zecchi Colori Belle Arti</b> <span>— the oldest art-supply store in Italy; pigments the Renaissance painters used. Buy Rafa his Italy sketchbook refill here.</span></li>
+          <li><b>Alberto Cozzi</b> <span>— bookbinding and paper restoration, fourth generation.</span></li>
+          <li><b>Giovanni Baccani — The Blue Shop</b> <span>— prints and framing since 1903.</span></li>
+          <li><b>Florence Factory</b> <span>— contemporary craft; good ceramics.</span></li>
+        </ul>
+      </div>
+      <div class="shop-group">
+        <h4>Scent &amp; Apothecary — Florence</h4>
+        <ul>
+          <li><b>Officina Profumo-Farmaceutica di Santa Maria Novella</b> <span>— founded by Dominican friars in 1612; the oldest pharmacy in the world. The rose water and the pot-pourri. Worth visiting just for the frescoed halls.</span></li>
+          <li><b>Profumeria Invicta</b> <span>— perfume and hair accessories.</span></li>
+        </ul>
+      </div>
+      <div class="shop-group">
+        <h4>Books, Design &amp; Home — Florence</h4>
+        <ul>
+          <li><b>Todo Modo</b> <span>— bookstore with a café and a theater hidden in back.</span></li>
+          <li><b>Gucci Giardino</b> <span>— the surprisingly good bookstore inside the Gucci garden.</span></li>
+          <li><b>Biblioteca Marucelliana</b> <span>— not a shop; a 1752 reading room you can walk into for free. For Eleni&rsquo;s study sessions.</span></li>
+          <li><b>Seletti Store</b> <span>— playful design objects.</span></li>
+          <li><b>Artigiani Toscana</b> <span>— Tuscan home goods.</span></li>
+          <li><b>Merceria Firenze Delcor</b> <span>— notions and classic pajamas.</span></li>
+          <li><b>The Way of Tea 2</b> <span>— tea shop, for the post-trip ritual.</span></li>
+        </ul>
+      </div>
+      <div class="shop-group">
+        <h4>Rome — Two Stops Only</h4>
+        <ul>
+          <li><b>Gammarelli</b> <span>— Via di Santa Chiara 34, behind the Pantheon. Tailors to the popes since 1798. You cannot buy the white cassock, but you can buy the cardinal-red socks, and you should. (Nicole&rsquo;s find — &ldquo;if we pass by we should stop in!&rdquo;)</span></li>
+          <li><b>Stadio di Domiziano</b> <span>— not a shop; the excavated stadium under Piazza Navona that Nancy flagged (&ldquo;supposed to be great&rdquo;). €8, half an hour, and you understand why the piazza is shaped like that.</span></li>
+        </ul>
+      </div>
+      <div class="shop-group">
+        <h4>Rules of Engagement</h4>
+        <ul>
+          <li><span>Real artisan shops <b>wrap things for travel</b> — ask, they&rsquo;re proud of it.</span></li>
+          <li><span>The leather stalls around San Lorenzo market are <b>not</b> the same as the shops above. Fine for a belt; not for the thing you keep.</span></li>
+          <li><span>Tax refund (IVA): purchases over €70 at one shop can claim ~12% back at the airport — keep receipts, ask for the form.</span></li>
+          <li><span>Carry-on math: you flew home with no checked bags. Gloves and paper fold; ceramics do not.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= SURVIVAL ======================= -->
+<section id="survival">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Logistics &amp; Field Notes</span>
+      <h2>The Survival Guide</h2>
+      <p class="epigraph">Ten people, two of them under four, in a 95-degree June. Here is how it works anyway.</p>
+    </div>
+
+    <div class="surv-grid">
+      <div class="surv-card">
+        <h4>Money</h4>
+        <ul>
+          <li><b>Get cash from bank ATMs</b> (Intesa Sanpaolo, UniCredit — attached to branches), never the blue Euronet machines. Decline &ldquo;conversion to USD&rdquo; every time — always charge in euros.</li>
+          <li>Carry <b>€100–150 cash</b>: the Rome city tax (€5/person/night, cash), Trattoria Mario (cash only), market stalls, gelato.</li>
+          <li>Cards work everywhere else; contactless is universal.</li>
+          <li><b>Coperto</b> is the per-person cover charge: normal, legal, not a tip, not a scam.</li>
+        </ul>
+      </div>
+
+      <div class="surv-card">
+        <h4>Babies &amp; Pharmacies</h4>
+        <ul>
+          <li>Diapers = <b>pannolini</b>; wipes = <b>salviettine</b>; formula = <b>latte in polvere</b> (Aptamil &ldquo;tipo 1&rdquo; for Lucia&rsquo;s age). Supermarkets (Conad, Coop) are cheapest; pharmacies are everywhere and the pharmacists speak English.</li>
+          <li>24-hour pharmacies: <b>Farmacia della Stazione</b> at Roma Termini; <b>Farmacia Comunale</b> inside Florence SMN station.</li>
+          <li>Italian pharmacists can diagnose and dispense for minor kid ailments — they are the urgent care.</li>
+          <li>Emergency number: <b>112</b> (EU-wide, English-speaking operators).</li>
+        </ul>
+      </div>
+
+      <div class="surv-card">
+        <h4>Evening Culture for the Siblings</h4>
+        <ul>
+          <li><b>Rome:</b> Trastevere after 10 PM, Bar San Callisto for €3 beers, Il Goccetto for wine; the Lungo il Tevere river festival runs nightly (free entry, skip the food).</li>
+          <li><b>Florence:</b> Piazza Santo Spirito is where the city actually hangs out; Volume and Pop Café for spritz.</li>
+          <li><b>Sunday option:</b> the Appian Way is closed to cars — rent e-bikes and ride the 2,300-year-old road out past the aqueducts. Back by tour time.</li>
+          <li>Calcio storico (Florentine costumed rugby-brawling) finals are June 24 — you&rsquo;ll miss the match but the arena in Piazza Santa Croce will be up all week.</li>
+        </ul>
+      </div>
+
+      <div class="surv-card">
+        <h4>The Phrasebook</h4>
+        <table class="phrases" style="border:0;">
+          <tbody>
+            <tr><td>Con calma</td><td>Take it easy — the family motto</td></tr>
+            <tr><td>Un tavolo per dieci, per favore</td><td>A table for ten, please (enjoy their face)</td></tr>
+            <tr><td>Due gusti, per favore</td><td>Two flavors, please — Rafa&rsquo;s line</td></tr>
+            <tr><td>Dov&rsquo;è il bagno?</td><td>Where&rsquo;s the bathroom?</td></tr>
+            <tr><td>Acqua naturale / frizzante</td><td>Still / sparkling water</td></tr>
+            <tr><td>Il conto, per favore</td><td>The check, please</td></tr>
+            <tr><td>Possiamo avere un seggiolone?</td><td>Could we have a high chair?</td></tr>
+            <tr><td>Quanto costa?</td><td>How much?</td></tr>
+            <tr><td>Grazie mille / Andiamo!</td><td>Thanks a thousand / Let&rsquo;s go!</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- putto easter egg II -->
+<figure class="putto">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Firenze_-_Museo_Opera_del_Duomo%2C_Cantoria_%28Donatello%29.jpg/500px-Firenze_-_Museo_Opera_del_Duomo%2C_Cantoria_%28Donatello%29.jpg" alt="Donatello's Cantoria, Opera del Duomo Museum, Florence" loading="lazy">
+  <figcaption>Donatello&rsquo;s <em>Cantoria</em> (1439) — a choir loft of putti mid-riot, carved for the cathedral you&rsquo;ll be living beside. Same room as the della Robbia above. Decide which one Rafa takes after.</figcaption>
+</figure>
+
+<!-- ======================= THE FINE PRINT ======================= -->
+<section id="codes">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Confirmations, Codes &amp; Numbers</span>
+      <h2>The Fine Print</h2>
+      <p class="epigraph">Everything with a number on it, in one place. Screenshot this section before you lose WiFi.</p>
+    </div>
+
+    <h3 style="font-size:28px; margin:26px 0 10px;">Flights</h3>
+    <table class="codes-table">
+      <thead><tr><th>Leg</th><th>Flight</th><th>Times</th><th>Who</th><th>Reference</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Barcelona → Rome<br><span class="small">Fri June 12</span></td>
+          <td>Wizz Air Malta W4 6020</td>
+          <td>BCN 21:45 → FCO 23:40</td>
+          <td>Santi, Nicole, Rafa, Lucia</td>
+          <td class="code">Gotogate 1113-152-570</td>
+        </tr>
+        <tr>
+          <td>Washington → Rome (direct)<br><span class="small">Thu June 11 → Fri June 12</span></td>
+          <td>United 126</td>
+          <td>IAD 22:20 → FCO 13:15 (+1)</td>
+          <td>The Six (group B)</td>
+          <td class="code">with Nancy</td>
+        </tr>
+        <tr>
+          <td>Washington → Rome (via Nice)<br><span class="small">Thu June 11 → Fri June 12</span></td>
+          <td>United 242 + ITA 345</td>
+          <td>IAD 17:25 → NCE 08:00 → FCO 16:30</td>
+          <td>The Six (group A)</td>
+          <td class="code">with Nancy</td>
+        </tr>
+        <tr>
+          <td>Florence → New York<br><span class="small">Sun June 21</span></td>
+          <td>TAP Portugal TP875 + TP209<br><span class="small">via Lisbon</span></td>
+          <td><b>FLR</b> 11:50 → JFK 20:05 EDT</td>
+          <td>Santi, Nicole, Rafa, Lucia</td>
+          <td class="code">Gotogate 1119-781-728</td>
+        </tr>
+        <tr>
+          <td>Florence → Washington (via Rome)<br><span class="small">Sun June 21</span></td>
+          <td>ITA 1676 + ITA 618</td>
+          <td><b>FLR</b> 06:25 → FCO → IAD 14:30 EDT</td>
+          <td>DC group, wave one</td>
+          <td class="code">with Nancy</td>
+        </tr>
+        <tr>
+          <td>Florence → Washington (via Munich)<br><span class="small">Sun June 21</span></td>
+          <td>Air Dolomiti 8193 + Lufthansa 414</td>
+          <td><b>FLR</b> 09:50 → MUC → IAD 19:25 EDT</td>
+          <td>DC group, wave two</td>
+          <td class="code">with Nancy</td>
+        </tr>
+        <tr>
+          <td>Florence → Barcelona<br><span class="small">Sun June 21, morning</span></td>
+          <td>—</td>
+          <td>morning</td>
+          <td>Nancy, Eleni, Nina</td>
+          <td class="code">with Nancy</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:28px; margin:26px 0 10px;">Lodging</h3>
+    <table class="codes-table">
+      <thead><tr><th>Place</th><th>Dates</th><th>Address</th><th>Codes &amp; Contacts</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Campo de&rsquo; Fiori 27 Suite<br><span class="small">(Santi&rsquo;s four; the Six at no. 56)</span></td>
+          <td>Jun 12–13</td>
+          <td>Piazza Campo de&rsquo; Fiori 27, Rome</td>
+          <td class="code">Booking.com 5523728978 · PIN 1998<br>+39 335 437 211 · €424.98 paid</td>
+        </tr>
+        <tr>
+          <td>Airbnb &ldquo;Domitilla&rdquo;</td>
+          <td>Jun 13–16</td>
+          <td>Piazza Benedetto Cairoli 107, Rome</td>
+          <td class="code">Host +39 346 300 1465 · smart lock<br>check-in 15:00 / out 10:00</td>
+        </tr>
+        <tr>
+          <td>Airbnb &ldquo;Francesca&rdquo;<br><span class="small">(Cresti — Casa sul Duomo)</span></td>
+          <td>Jun 16–21</td>
+          <td>Piazza dell&rsquo;Olio 3, Florence</td>
+          <td class="code">Host +39 340 349 2732<br>check-in 15:00 / out 10:00 · quiet 22:00–08:00</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:28px; margin:26px 0 10px;">Tours &amp; Tickets</h3>
+    <table class="codes-table">
+      <thead><tr><th>What</th><th>When</th><th>Details</th><th>Reference</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Mamertine Prison</td>
+          <td>Sat Jun 13, 9:00 AM slot<br><span class="small">(honored until 5 PM)</span></td>
+          <td>Clivo Argentario 1, by the Forum</td>
+          <td class="code">tickets with Nancy</td>
+        </tr>
+        <tr>
+          <td>Colosseum &amp; Forum tour</td>
+          <td>Sun Jun 14, <b>10:00 AM</b><br><span class="small">~3 hours</span></td>
+          <td>Rescheduled twice — 10 AM per operator&rsquo;s June 9 email. Meeting point on Nancy&rsquo;s WhatsApp</td>
+          <td class="code">tickets with Nancy</td>
+        </tr>
+        <tr>
+          <td>Vatican Museums tour</td>
+          <td>Mon Jun 15, 10 AM – 1 PM</td>
+          <td>Meet near the Vatican · passports + dress code</td>
+          <td class="code">in Nancy&rsquo;s TripIt</td>
+        </tr>
+        <tr>
+          <td>Rome → Florence train</td>
+          <td>Tue Jun 16, arrives ~7:30 PM</td>
+          <td>Roma Termini → Firenze S.M.N.</td>
+          <td class="code">booked — details with Nancy</td>
+        </tr>
+        <tr>
+          <td>Duomo Brunelleschi Pass × 10<br><span class="small">Dome climb + Bell Tower + Baptistery + Museum + crypt</span></td>
+          <td>Valid Jun 17–19<br><b>Dome climb: Wed Jun 17, 6:00 PM</b></td>
+          <td>Bring photo ID. Per-person refs:<br><span class="small">Santiago 87-15WG2U5E · Nicole 87-P43GJK1 · Rafael 87-82TI51P · Lucia 87-11G10828 · Nancy 87-W3A3OS9 · Diego 87-17MN3B99 · Joaquin 87-GGD8ZKC · Nina 87-LEYD1RA · Elena 87-NLSEUGL · Nicolas 87-136BXKMN</span></td>
+          <td class="code">Order 87-XS7PIC<br>Conf. SPDENLNMVMVV</td>
+        </tr>
+        <tr>
+          <td>Dinner with the Clarks</td>
+          <td>Fri Jun 19, evening</td>
+          <td>Florence — restaurant TBD</td>
+          <td class="code">Nancy coordinating</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:28px; margin:26px 0 10px;">Key Phone Numbers</h3>
+    <table class="codes-table">
+      <tbody>
+        <tr><td>EU emergency (police/medical/fire)</td><td class="code">112</td></tr>
+        <tr><td>Campo de&rsquo; Fiori 27 property</td><td class="code">+39 335 437 211</td></tr>
+        <tr><td>Rome Airbnb host (Domitilla)</td><td class="code">+39 346 300 1465</td></tr>
+        <tr><td>Florence Airbnb host (Francesca)</td><td class="code">+39 340 349 2732</td></tr>
+        <tr><td>Radio Taxi Firenze</td><td class="code">+39 055 4242</td></tr>
+        <tr><td>Radio Taxi Roma</td><td class="code">+39 06 3570</td></tr>
+        <tr><td>US Embassy Rome (emergencies)</td><td class="code">+39 06 46741</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ======================= FOOTER ======================= -->
+<footer>
+  <div class="motto">Con calma.</div>
+  <p>Compiled for the Ruiz family, June 2026 — from Nancy&rsquo;s bookings, the family threads, Emily&rsquo;s lists, Monsignor Fucinaro&rsquo;s map,
+  Santi &amp; Nicole&rsquo;s saved pins, and a small amount of robot labor.<br><br>
+  Errors are possible; boarding passes outrank this page. Gelato for dinner remains a fine option.</p>
+</footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- Collapsible sections (default closed) ---------- */
+  var callEnsureMaps = function(){ if (window.__ensureMaps) window.__ensureMaps(); };
+  document.querySelectorAll('section').forEach(function(sec) {
+    var wrap = sec.querySelector('.wrap');
+    if (!wrap) return;
+    var head = wrap.querySelector('.section-head');
+    if (!head) return;
+    var body = document.createElement('div');
+    body.className = 'section-body';
+    while (head.nextElementSibling) body.appendChild(head.nextElementSibling);
+    wrap.appendChild(body);
+    var hint = document.createElement('div');
+    hint.className = 'tap-hint';
+    hint.textContent = 'tap to open';
+    head.appendChild(hint);
+    var chev = document.createElement('div');
+    chev.className = 'chev';
+    chev.textContent = '+';
+    head.appendChild(chev);
+    head.addEventListener('click', function() {
+      var opening = !sec.classList.contains('open');
+      sec.classList.toggle('open');
+      if (opening && sec.id === 'maps') callEnsureMaps();
+    });
+  });
+
+  /* ---------- Collapsible day cards (default closed) ---------- */
+  document.querySelectorAll('.day').forEach(function(day) {
+    day.classList.add('collapsed');
+    var body = day.querySelector('.body');
+    var sub = body ? body.querySelector('.daysub') : null;
+    if (sub) {
+      var hint = document.createElement('div');
+      hint.className = 'day-hint';
+      hint.textContent = 'tap for the full day';
+      sub.insertAdjacentElement('afterend', hint);
+    }
+    var toggle = function() { day.classList.toggle('collapsed'); };
+    var dc = day.querySelector('.date-col');
+    if (dc) dc.addEventListener('click', toggle);
+    if (body) {
+      var h3 = body.querySelector('h3');
+      if (h3) h3.addEventListener('click', toggle);
+      if (sub) sub.addEventListener('click', toggle);
+      var dh = body.querySelector('.day-hint');
+      if (dh) dh.addEventListener('click', toggle);
+    }
+  });
+
+  /* ---------- Expand on navigation (nav links, glance table, hash) ---------- */
+  function expandTarget(id) {
+    var target = document.getElementById(id);
+    if (!target) return null;
+    var sec = (target.tagName === 'SECTION') ? target : (target.closest ? target.closest('section') : null);
+    if (sec) {
+      sec.classList.add('open');
+      if (sec.id === 'maps') callEnsureMaps();
+    }
+    if (target.classList && target.classList.contains('day')) target.classList.remove('collapsed');
+    return target;
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var id = a.getAttribute('href').slice(1);
+      if (!id) return;
+      var target = expandTarget(id);
+      if (!target) return;
+      e.preventDefault();
+      setTimeout(function() {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        try { history.replaceState(null, '', '#' + id); } catch(err) {}
+      }, 60);
+    });
+  });
+  if (location.hash) {
+    var hashTarget = expandTarget(location.hash.slice(1));
+    if (hashTarget) setTimeout(function(){ hashTarget.scrollIntoView({ block: 'start' }); }, 150);
+  }
+
+  /* ---------- Putti reveal on scroll ---------- */
+  try {
+    var puttoObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { en.target.classList.add('revealed'); puttoObs.unobserve(en.target); }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.putto').forEach(function(p){ puttoObs.observe(p); });
+  } catch(e) {
+    document.querySelectorAll('.putto').forEach(function(p){ p.classList.add('revealed'); });
+  }
+
+  /* ---------- Nav active state ---------- */
+  try {
+    var navLinks = Array.prototype.slice.call(document.querySelectorAll('nav.toc a'));
+    var sections = navLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+    function onScroll() {
+      var pos = window.scrollY + 120;
+      var active = 0;
+      sections.forEach(function(s, i){ if (s && s.offsetTop <= pos) active = i; });
+      navLinks.forEach(function(a, i){ a.classList.toggle('active', i === active); });
+    }
+    window.addEventListener('scroll', onScroll, {passive: true});
+    onScroll();
+  } catch(e) {}
+
+  /* ---------- Maps (lazy: built the first time the Maps section opens) ---------- */
+  var mapsInited = false;
+  window.__ensureMaps = function() {
+    if (mapsInited) return;
+    if (typeof L === 'undefined') return;  // offline: leave the fallback text
+    mapsInited = true;
+    setTimeout(buildAllMaps, 80);
+  };
+  function buildAllMaps() {
+
+  var TILES = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+  var ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>';
+  var C = { stay:'#D7263D', booked:'#1F5FBF', food:'#1E8A4C', idea:'#E9A820', shop:'#8B4FB8' };
+
+  function dotIcon(color, size) {
+    return L.divIcon({
+      className: '',
+      html: '<div class="pin-dot" style="width:'+size+'px;height:'+size+'px;background:'+color+'"></div>',
+      iconSize: [size, size], iconAnchor: [size/2, size/2], popupAnchor: [0, -size/2]
+    });
+  }
+
+  function popupHtml(p, tag, city) {
+    var q = encodeURIComponent(p.q || (p.name + ', ' + city));
+    return '<span class="ptag">' + tag + '</span><b>' + p.name + '</b><br>' + (p.note || '') +
+      '<br><a href="https://www.google.com/maps/search/?api=1&query=' + q + '" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>';
+  }
+
+  function buildMap(elId, center, zoom, layerDefs, city) {
+    var el = document.getElementById(elId);
+    if (!el) return null;
+    el.innerHTML = '';
+    var map = L.map(elId, { scrollWheelZoom: false, zoomControl: true });
+    map.setView(center, zoom);
+    L.tileLayer(TILES, { attribution: ATTR, maxZoom: 19, subdomains: 'abcd' }).addTo(map);
+    map.on('click', function(){ map.scrollWheelZoom.enable(); });
+    var overlays = {};
+    layerDefs.forEach(function(def){
+      var group = L.layerGroup();
+      def.pins.forEach(function(p){
+        L.marker([p.lat, p.lng], { icon: dotIcon(def.color, def.size) })
+          .bindPopup(popupHtml(p, def.tag, city))
+          .addTo(group);
+      });
+      group.addTo(map);
+      overlays[def.label] = group;
+    });
+    L.control.layers(null, overlays, { collapsed: window.innerWidth < 760 }).addTo(map);
+    return map;
+  }
+
+  /* ================= ROME ================= */
+  var romeStays = [
+    {name:'Campo de’ Fiori 27 (Fri night — Santi’s four)', lat:41.8957, lng:12.4721, note:'PIN 1998 · the Six next door at no. 56', q:'Piazza Campo de’ Fiori 27, Rome'},
+    {name:'Airbnb “Domitilla” (Jun 13–16)', lat:41.8939, lng:12.4758, note:'Piazza Benedetto Cairoli 107 · 4th floor, no elevator', q:'Piazza Benedetto Cairoli 107, Rome'}
+  ];
+  var romeBooked = [
+    {name:'Colosseum & Forum tour', lat:41.8902, lng:12.4922, note:'Sunday June 14, 10:00 AM · ~3 hrs', q:'Colosseum, Rome'},
+    {name:'Roman Forum', lat:41.8925, lng:12.4853, note:'Part of the Sunday tour — carrier territory, not stroller'},
+    {name:'Mamertine Prison', lat:41.8934, lng:12.4844, note:'Saturday tickets, flexible until 5 PM · Peter & Paul’s cell', q:'Carcere Mamertino, Rome'},
+    {name:'Vatican Museums & Sistine Chapel', lat:41.9065, lng:12.4536, note:'Monday June 15, 10 AM tour · dress code + passports', q:'Vatican Museums entrance, Rome'},
+    {name:'Chiesa Cristiana Breccia di Roma', lat:41.8959, lng:12.4843, note:'Sunday 5:30 PM · Via di S. Eufemia 9 · translation earphones', q:'Via di Santa Eufemia 9, Rome'},
+    {name:'Roma Termini', lat:41.9010, lng:12.5011, note:'Tuesday June 16 — the train to Florence leaves from here', q:'Roma Termini'}
+  ];
+  var romeFood = [
+    {name:'Tonnarello', lat:41.8896, lng:12.4693, note:'Trastevere · group-proof · cacio e pepe + coloring pages'},
+    {name:'Da Enzo al 29', lat:41.8875, lng:12.4787, note:'Emily’s favorite · no dinner reservations — queue or lunch'},
+    {name:'Da Teo', lat:41.8887, lng:12.4720, note:'Trastevere piazza tables · takes groups'},
+    {name:'Nonna Betta', lat:41.8927, lng:12.4778, note:'Jewish Ghetto · carciofi alla giudia'},
+    {name:'Piperno', lat:41.8925, lng:12.4759, note:'The fancy one · Nico’s sponsored-dinner candidate'},
+    {name:'Roma Sparita', lat:41.8873, lng:12.4751, note:'Cacio e pepe in a parmesan bowl (Fucinaro/Bourdain)'},
+    {name:'Checco er Carettiere', lat:41.8898, lng:12.4665, note:'Old-school Roman · Fucinaro pick'},
+    {name:'Vecchia Roma', lat:41.8933, lng:12.4795, note:'Piazza Campitelli · “delicious fettuccine” — Fucinaro'},
+    {name:'Flavio al Velavevodetto', lat:41.8758, lng:12.4744, note:'Testaccio · built into a hill of Roman pottery'},
+    {name:'Terre e Domus', lat:41.8950, lng:12.4843, note:'Modern Lazio cooking by Trajan’s Column · Emily'},
+    {name:'Il Botticelli', lat:41.9000, lng:12.4710, note:'From your saved map list'},
+    {name:'Pizzarium (Bonci)', lat:41.9072, lng:12.4459, note:'Pizza al taglio · the post-Vatican move'},
+    {name:'Trapizzino', lat:41.8782, lng:12.4769, note:'Pizza-pocket cones · genius with kids'},
+    {name:'Supplizio', lat:41.8975, lng:12.4691, note:'Gourmet supplì near the apartment'},
+    {name:'Antico Forno Roscioli', lat:41.8945, lng:12.4735, note:'Pizza bianca at 8 AM · around the corner from no. 27'},
+    {name:'Pizza della Madonna dei Monti', lat:41.8946, lng:12.4889, note:'Emily’s window-counter pizza · near Colosseum'},
+    {name:'Giolitti', lat:41.9007, lng:12.4768, note:'Gelato since 1900 · open till 1 AM'},
+    {name:'Frigidarium', lat:41.8995, lng:12.4715, note:'Gelato near Piazza Navona'},
+    {name:'Otaleg', lat:41.8884, lng:12.4690, note:'Trastevere · the connoisseur’s gelato'},
+    {name:'Fatamorgana (Monti)', lat:41.8957, lng:12.4906, note:'All-natural gelato, wild flavors'},
+    {name:'Gelateria della Palma', lat:41.9001, lng:12.4768, note:'150 flavors · Emily’s pick'},
+    {name:'Sciascia Caffè 1919', lat:41.9069, lng:12.4626, note:'Espresso with melted chocolate · your saved pin · near Vatican'},
+    {name:'Sant’Eustachio Il Caffè', lat:41.8982, lng:12.4750, note:'The famous gran caffè'},
+    {name:'Il Goccetto', lat:41.8972, lng:12.4687, note:'Wine bar in a 16th-c. palazzo · your saved pin'},
+    {name:'La Barrique', lat:41.8967, lng:12.4925, note:'Natural wine, Monti · your saved pin'},
+    {name:'VyTA', lat:41.8946, lng:12.4708, note:'Aperol on Piazza Farnese · Emily'},
+    {name:'Bar San Callisto', lat:41.8889, lng:12.4697, note:'€3 beers with the locals · Emily'}
+  ];
+  var romeIdeas = [
+    {name:'Pantheon', lat:41.8986, lng:12.4769, note:'€5, under-18 free · the coolest air in Rome'},
+    {name:'Piazza Navona', lat:41.8992, lng:12.4731, note:'Bernini’s fountains · evening passeggiata'},
+    {name:'Stadio di Domiziano', lat:41.8999, lng:12.4725, note:'The stadium under Piazza Navona · Nancy: “supposed to be great”'},
+    {name:'Trevi Fountain', lat:41.9009, lng:12.4833, note:'Free before 9 AM, €2 after · coin = you’ll return'},
+    {name:'Largo di Torre Argentina', lat:41.8956, lng:12.4768, note:'Caesar’s assassination site, now a cat sanctuary · 2 blocks from the apartment'},
+    {name:'Castel Sant’Angelo', lat:41.9031, lng:12.4663, note:'Hadrian’s tomb / papal fortress · best dusk view of St. Peter’s'},
+    {name:'St. Peter’s Basilica', lat:41.9022, lng:12.4539, note:'Free · go at 7 AM or suffer the line'},
+    {name:'Villa Borghese — the lake', lat:41.9136, lng:12.4856, note:'Rowboats €3 · the toddler decompression valve'},
+    {name:'Piazza San Cosimato', lat:41.8878, lng:12.4689, note:'Free outdoor Miyazaki, Saturdays 9:15 PM'},
+    {name:'Gammarelli', lat:41.8979, lng:12.4781, note:'The pope’s tailor since 1798 · buy the red socks'},
+    {name:'Capitoline Museums', lat:41.8931, lng:12.4828, note:'Open Mondays · the she-wolf · your saved pin'},
+    {name:'Spanish Steps', lat:41.9060, lng:12.4828, note:'Climb, photo, move on (sitting = €250 fine)'},
+    {name:'Jewish Ghetto', lat:41.8920, lng:12.4779, note:'Artichoke row · 10 min from the apartment'},
+    {name:'Trastevere', lat:41.8895, lng:12.4694, note:'Evening neighborhood · dinner + gelato + wandering'}
+  ];
+
+  buildMap('map-rome', [41.8965, 12.4760], 14, [
+    { label:'Where you sleep', tag:'Where you sleep', color:C.stay, size:22, pins:romeStays },
+    { label:'Booked', tag:'Booked', color:C.booked, size:15, pins:romeBooked },
+    { label:'Eat & gelato', tag:'Eat & gelato', color:C.food, size:12, pins:romeFood },
+    { label:'Ideas', tag:'Idea', color:C.idea, size:12, pins:romeIdeas }
+  ], 'Rome, Italy');
+
+  /* ================= FLORENCE ================= */
+  var florStays = [
+    {name:'Airbnb “Francesca” (Jun 16–21)', lat:43.7734, lng:11.2540, note:'Piazza dell’Olio 3 · one block from the Duomo · roof terrace', q:'Piazza dell’Olio 3, Florence'}
+  ];
+  var florBooked = [
+    {name:'Duomo — Brunelleschi dome climb', lat:43.7734, lng:11.2569, note:'Wed June 17, 6:00 PM SHARP · photo ID · 463 steps', q:'Duomo Florence'},
+    {name:'Giotto’s Bell Tower', lat:43.7727, lng:11.2555, note:'On your pass through June 19 · 414 steps, view OF the dome'},
+    {name:'Baptistery of San Giovanni', lat:43.7731, lng:11.2549, note:'On your pass · Ghiberti’s doors, gold mosaic ceiling'},
+    {name:'Opera del Duomo Museum', lat:43.7732, lng:11.2577, note:'On your pass · the original Gates of Paradise · A/C'},
+    {name:'Firenze Santa Maria Novella station', lat:43.7765, lng:11.2480, note:'Arrive Tue ~7:30 PM · 10-min walk to the apartment', q:'Firenze Santa Maria Novella'}
+  ];
+  var florFood = [
+    {name:'Mercato Centrale (food hall)', lat:43.7764, lng:11.2531, note:'The 10-person answer · open 10 AM–midnight'},
+    {name:'Trattoria Mario', lat:43.7763, lng:11.2546, note:'Lunch only, cash only, no reservations · since 1953'},
+    {name:'Trattoria Zà Zà', lat:43.7770, lng:11.2540, note:'Your saved pin · big tables, ribollita, bistecca'},
+    {name:'All’Antico Vinaio', lat:43.7682, lng:11.2585, note:'Your saved pin · use the train-station branch to skip the line'},
+    {name:'Da Nerbone', lat:43.7766, lng:11.2533, note:'Lampredotto since 1873 · the adults’ dare'},
+    {name:'La Giostra', lat:43.7716, lng:11.2645, note:'Emily: “highly recommend” · Clark-dinner candidate'},
+    {name:'Osteria Belle Donne', lat:43.7722, lng:11.2495, note:'Emily · the other Clark-dinner candidate'},
+    {name:'Trattoria Sostanza', lat:43.7728, lng:11.2469, note:'The butter chicken · books out weeks ahead'},
+    {name:'Perseus', lat:43.7842, lng:11.2620, note:'Family bistecca, takes big groups'},
+    {name:'La Casalinga', lat:43.7668, lng:11.2477, note:'Oltrarno home cooking · fast, cheap, kind'},
+    {name:'Osteria Santo Spirito', lat:43.7669, lng:11.2470, note:'Truffle gnocchi on the piazza'},
+    {name:'Ditta Artigianale', lat:43.7676, lng:11.2525, note:'Emily: “best breakfast of the trip”'},
+    {name:'Pasticceria Deanna', lat:43.7741, lng:11.2454, note:'Breakfast pastries · Emily'},
+    {name:'Pino’s (Salumeria Verdi)', lat:43.7700, lng:11.2628, note:'The no-line sandwich counter'},
+    {name:'Gelateria della Passera', lat:43.7674, lng:11.2492, note:'Possibly the best gelato in Italy'},
+    {name:'Vivoli', lat:43.7695, lng:11.2610, note:'Since 1929 · cups only'},
+    {name:'La Carraia', lat:43.7686, lng:11.2452, note:'€1.50 cones · kid heaven'},
+    {name:'Gelateria dei Neri', lat:43.7684, lng:11.2597, note:'Pairs with the sandwich run'}
+  ];
+  var florIdeas = [
+    {name:'Uffizi Gallery', lat:43.7678, lng:11.2553, note:'STILL UNTICKETED · book at uffizi.it or skip with honor'},
+    {name:'Accademia — David', lat:43.7768, lng:11.2587, note:'One hallway, one giant · under-18 free'},
+    {name:'Palazzo Vecchio', lat:43.7693, lng:11.2558, note:'Open Mondays · tower climb · where the Pazzi hanged'},
+    {name:'Ponte Vecchio', lat:43.7679, lng:11.2531, note:'Go before 9 AM or after 10 PM'},
+    {name:'Piazzale Michelangelo', lat:43.7629, lng:11.2650, note:'THE sunset view · Saturday ~8 PM'},
+    {name:'Rose Garden', lat:43.7634, lng:11.2622, note:'Below the Piazzale · quieter, 80% of the view'},
+    {name:'Boboli Gardens', lat:43.7625, lng:11.2483, note:'The Medici backyard · kids run free'},
+    {name:'Pitti Palace', lat:43.7651, lng:11.2500, note:'Raphael-stuffed · closed Mondays'},
+    {name:'Santa Croce', lat:43.7686, lng:11.2622, note:'Tombs of Michelangelo, Galileo & Machiavelli · calcio storico arena out front'},
+    {name:'Piazza Santo Spirito', lat:43.7667, lng:11.2475, note:'Where Florence actually hangs out · evening aperitivo'},
+    {name:'Piazza della Signoria', lat:43.7696, lng:11.2556, note:'The open-air sculpture gallery · free, always'},
+    {name:'Fiesole', lat:43.8064, lng:11.2931, note:'Bus #7, 25 min · the realistic day trip'}
+  ];
+  var florShops = [
+    {name:'Scuola del Cuoio', lat:43.7683, lng:11.2631, note:'The leather school behind Santa Croce'},
+    {name:'Madova', lat:43.7677, lng:11.2530, note:'Gloves since 1919 · Nicole’s find'},
+    {name:'Il Papiro', lat:43.7726, lng:11.2570, note:'Marbled paper'},
+    {name:'Officina Profumo S. M. Novella', lat:43.7745, lng:11.2475, note:'The 1612 friar pharmacy'},
+    {name:'Zecchi Colori Belle Arti', lat:43.7715, lng:11.2585, note:'Oldest art supplies in Italy · Rafa’s sketchbook refill'},
+    {name:'Il Bisonte', lat:43.7706, lng:11.2477, note:'Leather goods since 1970'},
+    {name:'Benheart', lat:43.7710, lng:11.2553, note:'Handmade leather, Via Calzaiuoli'},
+    {name:'Todo Modo', lat:43.7689, lng:11.2475, note:'Bookstore with a café'},
+    {name:'Alberto Cozzi', lat:43.7721, lng:11.2489, note:'Bookbinding & paper restoration'},
+    {name:'Giovanni Baccani — The Blue Shop', lat:43.7704, lng:11.2528, note:'Prints & framing since 1903'}
+  ];
+
+  buildMap('map-florence', [43.7710, 11.2545], 15, [
+    { label:'Where you sleep', tag:'Where you sleep', color:C.stay, size:22, pins:florStays },
+    { label:'Booked', tag:'Booked', color:C.booked, size:15, pins:florBooked },
+    { label:'Eat & gelato', tag:'Eat & gelato', color:C.food, size:12, pins:florFood },
+    { label:'Ideas', tag:'Idea', color:C.idea, size:12, pins:florIdeas },
+    { label:'Shops', tag:'Shop', color:C.shop, size:12, pins:florShops }
+  ], 'Florence, Italy');
+
+  /* ================= ITALY OVERVIEW ================= */
+  (function(){
+    var el = document.getElementById('map-italy');
+    if (!el) return;
+    el.innerHTML = '';
+    var map = L.map('map-italy', { scrollWheelZoom: false }).setView([42.85, 11.9], 7);
+    L.tileLayer(TILES, { attribution: ATTR, maxZoom: 19, subdomains: 'abcd' }).addTo(map);
+    map.on('click', function(){ map.scrollWheelZoom.enable(); });
+
+    var trainLine = L.polyline([
+      [41.9010, 12.5011], [42.45, 12.38], [42.72, 12.11], [43.02, 11.95], [43.46, 11.88], [43.7765, 11.2480]
+    ], { color: '#B0532F', weight: 3, dashArray: '6 8', opacity: 0.85 }).addTo(map);
+
+    function bigPin(p, color, tag, city) {
+      L.marker([p.lat, p.lng], { icon: dotIcon(color, 18) }).bindPopup(popupHtml(p, tag, city)).addTo(map);
+    }
+    bigPin({name:'Rome · June 12–16', lat:41.8956, lng:12.4722, note:'Land at FCO Friday 11:40 PM · four days', q:'Rome, Italy'}, C.booked, 'Act One', 'Rome');
+    bigPin({name:'Florence · June 16–21', lat:43.7731, lng:11.2560, note:'Arrive by train Tuesday 7:30 PM · five days', q:'Florence, Italy'}, C.booked, 'Act Two', 'Florence');
+    bigPin({name:'FCO — Rome Fiumicino', lat:41.8003, lng:12.2389, note:'You land here June 12. You never see it again.', q:'Fiumicino Airport'}, C.idea, 'Arrival airport', 'Rome');
+    bigPin({name:'FLR — Florence Peretola', lat:43.8100, lng:11.2051, note:'EVERYONE flies home from here June 21 · 15 min from the apartment', q:'Florence Airport Peretola'}, C.stay, 'Departure airport', 'Florence');
+    bigPin({name:'The train · June 16', lat:42.72, lng:12.11, note:'Roma Termini → Firenze S.M.N. · ~95 minutes · sit on the left', q:'Orvieto, Italy'}, C.food, 'The transfer', 'Italy');
+  })();
+
+  } /* end buildAllMaps */
+
+})();
+</script>
+</body>
+</html>
