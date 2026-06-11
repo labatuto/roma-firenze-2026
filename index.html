@@ -310,10 +310,29 @@
   }
   .putto.revealed { opacity: 1; transform: none; }
   .putto img {
-    width: 100%; max-width: 350px; border: 1px solid var(--line); padding: 10px; background: #fff;
+    width: 100%; max-width: 350px; height: auto; border: 1px solid var(--line); padding: 10px; background: #fff;
     box-shadow: 0 3px 18px rgba(44,42,38,0.09); filter: sepia(0.14) contrast(0.98);
   }
   .putto figcaption { font-size: 14.5px; font-style: italic; color: var(--ink-soft); margin-top: 13px; line-height: 1.55; }
+
+  /* ---------- floating close pill ---------- */
+  #close-pill {
+    position: fixed; bottom: 22px; left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--ink); color: var(--paper);
+    font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 14px 24px; border-radius: 999px; border: none;
+    box-shadow: 0 6px 26px rgba(44,42,38,0.38);
+    cursor: pointer; z-index: 1100;
+    display: flex; align-items: center; gap: 9px;
+    max-width: 86vw;
+    opacity: 0; pointer-events: none;
+    transition: transform .3s ease, opacity .3s ease;
+  }
+  #close-pill.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
+  #close-pill .x { font-size: 17px; line-height: 1; font-weight: 400; }
+  #close-pill .lbl { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
   /* ---------- responsive ---------- */
   @media (max-width: 680px) {
@@ -338,7 +357,7 @@
     .masthead { padding: 54px 18px 34px; }
   }
   @media print {
-    nav.toc, .mapbox, .map-caption { display: none !important; }
+    nav.toc, .mapbox, .map-caption, #close-pill { display: none !important; }
     body { font-size: 12px; background: #fff; }
     .day, .surv-card, .stay-card, .cast-card { break-inside: avoid; border: 1px solid #ccc; }
     section { padding: 12px 0; }
@@ -752,7 +771,7 @@
 
 <!-- putto easter egg I -->
 <figure class="putto">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Cantoria_di_luca_della_robbia_01.JPG/960px-Cantoria_di_luca_della_robbia_01.JPG" alt="Luca della Robbia's Cantoria, Opera del Duomo Museum, Florence" loading="lazy">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Cantoria_di_luca_della_robbia_01.JPG/960px-Cantoria_di_luca_della_robbia_01.JPG" alt="Luca della Robbia's Cantoria, Opera del Duomo Museum, Florence" width="960" height="832">
   <figcaption>Luca della Robbia&rsquo;s <em>Cantoria</em> (1431&ndash;38) &mdash; ten panels of children singing, dancing, and banging drums, carved for the Duomo&rsquo;s organ loft. It lives in the Opera del Duomo Museum; your Brunelleschi Pass gets you in to meet it on June 17.</figcaption>
 </figure>
 
@@ -1231,7 +1250,7 @@
 
 <!-- putto easter egg II -->
 <figure class="putto">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Donatello%2C_cantoria%2C_veduta%2C_1433-39%2C_01.JPG/960px-Donatello%2C_cantoria%2C_veduta%2C_1433-39%2C_01.JPG" alt="Donatello's Cantoria, Opera del Duomo Museum, Florence" loading="lazy">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Donatello%2C_cantoria%2C_veduta%2C_1433-39%2C_01.JPG/960px-Donatello%2C_cantoria%2C_veduta%2C_1433-39%2C_01.JPG" alt="Donatello's Cantoria, Opera del Duomo Museum, Florence" width="960" height="760">
   <figcaption>Donatello&rsquo;s <em>Cantoria</em> (1439) &mdash; his answer to the della Robbia: a frieze of putti mid-riot, racing behind the columns. Same room, facing wall. Decide which one Rafa takes after.</figcaption>
 </figure>
 
@@ -1474,17 +1493,76 @@
     if (hashTarget) setTimeout(function(){ hashTarget.scrollIntoView({ block: 'start' }); }, 150);
   }
 
-  /* ---------- Putti reveal on scroll ---------- */
-  try {
-    var puttoObs = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if (en.isIntersecting) { en.target.classList.add('revealed'); puttoObs.unobserve(en.target); }
-      });
-    }, { threshold: 0.2 });
-    document.querySelectorAll('.putto').forEach(function(p){ puttoObs.observe(p); });
-  } catch(e) {
-    document.querySelectorAll('.putto').forEach(function(p){ p.classList.add('revealed'); });
+  /* ---------- Putti reveal on scroll (scroll-listener; no observer dependency) ---------- */
+  function revealPutti() {
+    document.querySelectorAll('.putto:not(.revealed)').forEach(function(p) {
+      if (p.getBoundingClientRect().top < window.innerHeight * 0.85) p.classList.add('revealed');
+    });
   }
+  window.addEventListener('scroll', revealPutti, { passive: true });
+  window.addEventListener('resize', revealPutti, { passive: true });
+  revealPutti();
+
+  /* ---------- Floating close pill (close the section you're inside, from anywhere) ---------- */
+  var pill = document.createElement('button');
+  pill.id = 'close-pill';
+  pill.type = 'button';
+  pill.innerHTML = '<span class="x">&times;</span><span class="lbl">Close</span>';
+  document.body.appendChild(pill);
+  var pillLabel = pill.querySelector('.lbl');
+  var pillTarget = null;
+
+  function updatePill() {
+    var probeY = window.innerHeight * 0.45;
+    var best = null;
+    document.querySelectorAll('section.open').forEach(function(sec) {
+      var r = sec.getBoundingClientRect();
+      if (r.top < probeY && r.bottom > probeY) best = sec;
+    });
+    if (best) {
+      var head = best.querySelector('.section-head');
+      if (head && head.getBoundingClientRect().bottom > 0) best = null; /* header still on screen - tap it instead */
+    }
+    if (best) {
+      if (pillTarget !== best) {
+        var h2 = best.querySelector('.section-head h2');
+        pillLabel.textContent = 'Close ' + (h2 ? h2.textContent.replace(/\s+/g, ' ').trim() : 'section');
+      }
+      pillTarget = best;
+      pill.classList.add('show');
+    } else {
+      pillTarget = null;
+      pill.classList.remove('show');
+    }
+  }
+
+  var pillTick = false;
+  function queuePill() {
+    if (pillTick) return;
+    pillTick = true;
+    requestAnimationFrame(function() { pillTick = false; updatePill(); });
+  }
+  window.addEventListener('scroll', queuePill, { passive: true });
+  window.addEventListener('resize', queuePill, { passive: true });
+  document.querySelectorAll('.section-head').forEach(function(h) {
+    h.addEventListener('click', function() { setTimeout(updatePill, 60); });
+  });
+
+  pill.addEventListener('click', function() {
+    if (!pillTarget) return;
+    var sec = pillTarget;
+    sec.classList.remove('open');
+    pill.classList.remove('show');
+    pillTarget = null;
+    /* land on the collapsed section bar, just under the sticky nav, no animation */
+    var nav = document.querySelector('nav.toc');
+    var navH = nav ? nav.offsetHeight : 0;
+    var prev = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = 'auto';
+    var top = sec.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop) - navH - 10;
+    document.scrollingElement.scrollTop = Math.max(0, top);
+    document.documentElement.style.scrollBehavior = prev;
+  });
 
   /* ---------- Nav active state ---------- */
   try {
